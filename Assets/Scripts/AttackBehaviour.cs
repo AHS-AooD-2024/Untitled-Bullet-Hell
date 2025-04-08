@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackBehaviour : MonoBehaviour {
-
     public void Swing(float range, float breadth) {
         Vector2 fwd = transform.TransformDirection(Vector3.up);
         Vector2 pos2D = transform.position;
@@ -16,4 +15,10 @@ public class AttackBehaviour : MonoBehaviour {
             }
         }
     }
+
+    public void Shoot(Projectile2D projectile, Vector2 offset) {
+        projectile.Launch(transform.position + transform.TransformDirection(offset), transform.TransformDirection(Vector2.up));
+    }
+    
+    public void Shoot(Projectile2D projectile) => Shoot(projectile, Vector2.zero);
 }
