@@ -130,7 +130,7 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
         );
 
         Vector2 translation = m_velocity;
-        m_rigidbody.velocity = translation;
+        m_rigidbody.linearVelocity = translation;
 
         if(look != Vector2.zero) {
             // Rotate the object to face in the direction of look
