@@ -33,7 +33,8 @@ public class AttackBehaviour : MonoBehaviour {
     [SerializeField]
     private Animator m_animator;
 
-    public void Swing(float range, float breadth) {
+    public void Swing(float range, float breadth) => Swing(range, breadth, DamageInfo.one);
+    public void Swing(float range, float breadth, DamageInfo damageInfo) {
         if(IsOffCooldown){
             m_animator.SetTrigger("On Swing");
             Vector2 fwd = transform.TransformDirection(Vector3.up);
@@ -42,7 +43,7 @@ public class AttackBehaviour : MonoBehaviour {
             RaycastHit2D[] hits = Physics2D.CircleCastAll(pos2D, radius, fwd, range);
             foreach (RaycastHit2D hit in hits) {
                 if(hit) {
-                    hit.transform.BroadcastMessage("OnHitBySwing", SendMessageOptions.DontRequireReceiver);
+                    hit.transform.BroadcastMessage("OnHitBySwing", damageInfo, SendMessageOptions.DontRequireReceiver);
                     // These lines are a bit scuffed and don't really represent the circle cast, but it is kinda close.
                     // If we need better debug lines lmk -- S.
                     Debug.DrawLine(pos2D, pos2D + range * fwd, Color.white, 1.0F);
@@ -64,8 +65,8 @@ public class AttackBehaviour : MonoBehaviour {
     public void UpdateCooldowns(float deltaTime) {
         if(m_swingCooldownTime > 0.0F) m_swingCooldownTime -= deltaTime;
         if(m_shootCooldownTime > 0.0F) m_shootCooldownTime -= deltaTime;
-        m_animator.SetFloat("Swing Cooldown Time", m_swingCooldownTime);
-        m_animator.SetFloat("Shoot Cooldown Time", m_shootCooldownTime);
+        // m_animator.SetFloat("Swing Cooldown Time", m_swingCooldownTime);
+        // m_animator.SetFloat("Shoot Cooldown Time", m_shootCooldownTime);
     }
 
     public void Shoot(Projectile2D projectile) => Shoot(projectile, Vector2.zero);
