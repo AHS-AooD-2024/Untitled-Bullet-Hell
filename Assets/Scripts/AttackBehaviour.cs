@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttackBehaviour : MonoBehaviour {
     [Header("Cooldowns")]
@@ -26,8 +27,15 @@ public class AttackBehaviour : MonoBehaviour {
     [Range(0, 10)]
     private int m_numReloadStages = 1;
 
+    [Header("Animations")]
+    [Space]
+
+    [SerializeField]
+    private Animator m_animator;
+
     public void Swing(float range, float breadth) {
-        if(m_swingCooldownTime <= 0.0F){
+        if(IsOffCooldown){
+            m_animator.SetTrigger("On Swing");
             Vector2 fwd = transform.TransformDirection(Vector3.up);
             Vector2 pos2D = transform.position;
             float radius = breadth * 0.5F;
@@ -46,7 +54,8 @@ public class AttackBehaviour : MonoBehaviour {
     }
 
     public void Shoot(Projectile2D projectile, Vector2 offset) {
-        if(m_shootCooldownTime <= 0.0F) {
+        if(IsOffCooldown) {
+            m_animator.SetTrigger("On Shoot");
             projectile.Launch(transform.position + transform.TransformDirection(offset), transform.TransformDirection(Vector2.up));
             m_shootCooldownTime = m_shootCooldownSeconds;
         }
@@ -55,9 +64,14 @@ public class AttackBehaviour : MonoBehaviour {
     public void UpdateCooldowns(float deltaTime) {
         if(m_swingCooldownTime > 0.0F) m_swingCooldownTime -= deltaTime;
         if(m_shootCooldownTime > 0.0F) m_shootCooldownTime -= deltaTime;
+        m_animator.SetFloat("Swing Cooldown Time", m_swingCooldownTime);
+        m_animator.SetFloat("Shoot Cooldown Time", m_shootCooldownTime);
     }
-    
+
     public void Shoot(Projectile2D projectile) => Shoot(projectile, Vector2.zero);
+
+    public bool IsOnCooldown { get => m_swingCooldownTime > 0.0F || m_shootCooldownTime > 0.0F; }
+    public bool IsOffCooldown { get => !IsOnCooldown; }
 
     public void InterruptReload() {
         // Example:
