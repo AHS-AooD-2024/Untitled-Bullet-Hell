@@ -57,5 +57,8 @@ public class LegacyInputAttack : AttackBehaviour {
 
     public void OnDash() {
         InterruptReload();
+        // prevent attacks during dash
+        m_doShoot = false;
+        m_doSwing = false;
     }
 }
