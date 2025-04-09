@@ -12,7 +12,7 @@ public class ProjectileInstance2D : MonoBehaviour {
     private Rigidbody2D m_rigidbody2D;
 
     private void Awake() {
-        if(m_rigidbody2D is null) {
+        if(m_rigidbody2D == null) {
             m_rigidbody2D = GetComponent<Rigidbody2D>();
         }
 

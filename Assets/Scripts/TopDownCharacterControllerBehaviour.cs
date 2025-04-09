@@ -85,11 +85,11 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
             Debug.LogError("Cannot face a zero direction.");
         }
 
-        if(m_animator is null) {
+        if(m_animator == null) {
             m_animator = GetComponent<Animator>();
         }
         
-        if(m_rigidbody is null) {
+        if(m_rigidbody == null) {
             m_rigidbody = GetComponent<Rigidbody2D>();
             
             // Gravity is in the y direction, which we kinda need
@@ -101,7 +101,10 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
     public void Move(Vector2 movement, Vector2 look, bool doDash, float deltaTime) {
         m_move = movement.normalized;
         m_targetVelocity = m_move * m_movementSpeed;
-        m_isDashing |= doDash;
+        if (doDash && !m_isDashing) {
+            m_isDashing = true;
+            BroadcastMessage("OnDashStart", SendMessageOptions.DontRequireReceiver);
+        }
 
         look.Normalize();
 
@@ -109,10 +112,12 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
             if(m_dashTime < m_dashDurationSeconds) {
                 m_dashTime += deltaTime;
                 m_targetVelocity *= DashSpeedCoefficient(m_dashTime / m_dashDurationSeconds);
+                BroadcastMessage("OnDash", SendMessageOptions.DontRequireReceiver);
             } else {
                 m_dashTime = 0.0F;
                 m_dashCooldownTime = m_dashCooldownSeconds;
                 m_isDashing = false;
+                BroadcastMessage("OnDashEnd", SendMessageOptions.DontRequireReceiver);
             }
         }
 

@@ -438,10 +438,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2746c01f95a52374eb6e8b8e4bdc8932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_swingCooldownSeconds: 0.1
+  m_shootCooldownSeconds: 0.5
+  m_numReloadStages: 1
   m_projectile: {fileID: 11400000, guid: 5ce865a4315a1c84dbd37cd1c334d11a, type: 2}
+  m_doAutoFire: 1
   m_relativeOffset: {x: 0, y: 0}
   m_range: 1
   m_breadth: 0.5
+  m_doAutoSwing: 1
 --- !u!1 &722209650
 GameObject:
   m_ObjectHideFlags: 0

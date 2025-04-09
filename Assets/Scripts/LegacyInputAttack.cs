@@ -10,6 +10,11 @@ public class LegacyInputAttack : AttackBehaviour {
     private Projectile2D m_projectile;
 
     [SerializeField]
+    private bool m_doAutoFire = true;
+
+    private bool m_doShoot = false;
+
+    [SerializeField]
     private Vector2 m_relativeOffset = Vector2.zero;
 
     [Header("Melee")]
@@ -21,22 +26,24 @@ public class LegacyInputAttack : AttackBehaviour {
     [SerializeField]
     private float m_breadth = 1.0F;
 
+    [SerializeField]
+    private bool m_doAutoSwing = true;
+
     private bool m_doSwing = false;
-    private bool m_doShoot = false;
 
     private void Update() {
-        if(Input.GetButtonDown("Fire1")) {
-            Debug.Log("Swing");
+        if(m_doAutoSwing && Input.GetButton("Fire1") || Input.GetButtonDown("Fire1")) {
             m_doSwing = true;
         }
         
-        if(Input.GetButtonDown("Fire2")) {
-            Debug.Log("Shoot");
+        if(m_doAutoFire && Input.GetButton("Fire2") || Input.GetButtonDown("Fire2")) {
             m_doShoot = true;
         }
     }
 
     private void FixedUpdate() {
+        UpdateCooldowns(Time.fixedDeltaTime);
+
         if(m_doSwing) {
             Swing(m_range, m_breadth);
             m_doSwing = false;
@@ -46,5 +53,9 @@ public class LegacyInputAttack : AttackBehaviour {
             Shoot(m_projectile, m_relativeOffset);
             m_doShoot = false;
         }
+    }
+
+    public void OnDash() {
+        InterruptReload();
     }
 }
