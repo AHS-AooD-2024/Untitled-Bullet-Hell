@@ -5,25 +5,29 @@ using UnityEngine;
 //Represents the start of a behavior tree (instead of holding the head node)
 public class BehaviorTree
 {
-    private BehaviorNode root;
-    private BehaviorNode current;
+    private IBehavior root;
+    private IBehavior current;
     private EnemyBehaviorManager manager;
     private bool isAlive;
     private bool detectsPlayer;
 
-    public BehaviorTree(BehaviorNode root, EnemyBehaviorManager manager)
+    public BehaviorTree(IBehavior root, EnemyBehaviorManager manager)
     {
         this.root = root;
         current = null;
         this.manager = manager;
         isAlive = true;
         detectsPlayer = false;
-        manager.GetHealth().SubscribeToDeathEvent(RespondToDeath);
+        //manager.GetHealth().AddOnDeathEventListener(RespondToDeath);
     }
 
     private void RespondToDeath(EnemyHealth e)
     {
         isAlive = false;
+    }
+    public void DetectsPlayer(bool detects)
+    {
+        detectsPlayer = detects;
     }
     /// <summary>
     /// Begins the Running the Behavior Tree
@@ -32,22 +36,27 @@ public class BehaviorTree
     {
         current = root;
         detectsPlayer = true;
-        while (true)
+        manager.StartCoroutine(RunBehaviorTree());
+    }
+
+    private IEnumerator RunBehaviorTree()
+    {
+        while (isAlive && detectsPlayer)
         {
-            manager.StartCoroutine(StartCurrentBehavior());
+            yield return manager.StartCoroutine(StartCurrentBehavior());
             current = FindNextBehavior();
-            if (!isAlive || !detectsPlayer) return;
         }
     }
     private IEnumerator StartCurrentBehavior()
     {
+        Debug.Log("ATTACK DELAY: " + current.Delay);
         yield return new WaitForSeconds(current.Delay);
-        current.Run();
-        yield return new WaitForSeconds(current.Duration);
+        Debug.Log("ATTACKING");
+        yield return manager.StartCoroutine(current.DoBehavior());
     }
-    private BehaviorNode FindNextBehavior()
+    private IBehavior FindNextBehavior()
     {
-        List<BehaviorNode> nextBehaviors = current.GetNextBehaviorsAsList();
+        List<IBehavior> nextBehaviors = current.GetNextBehaviorsAsList();
         if (nextBehaviors.Count == 0)
         {
             if (!current.RepeatIfEnd)
@@ -58,8 +67,8 @@ public class BehaviorTree
                 return current;
         }
         //TODO: add weighting, ie more likely for close moves when close, etc.
-        List<BehaviorNode> validBehaviors = new();
-        foreach(BehaviorNode behavior in nextBehaviors)
+        List<IBehavior> validBehaviors = new();
+        foreach(IBehavior behavior in nextBehaviors)
         {
             if (behavior.BehaviorCondition()) validBehaviors.Add(behavior);
         }

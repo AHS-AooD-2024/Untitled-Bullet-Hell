@@ -89,7 +89,7 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
             m_animator = GetComponent<Animator>();
         }
         
-        if(m_rigidbody is null) {
+        if(m_rigidbody == null) {
             m_rigidbody = GetComponent<Rigidbody2D>();
             
             // Gravity is in the y direction, which we kinda need

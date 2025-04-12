@@ -5,11 +5,11 @@ public class EnemyHealth : MonoBehaviour
 {
     //do health stuff
     private event Action<EnemyHealth> onDeath;
-    public void SubscribeToDeathEvent(Action<EnemyHealth> e)
+    public void AddOnDeathEventListener(Action<EnemyHealth> e)
     {
         onDeath += e;
     }
-    public void UnsubscribeFromDeathEvent(Action<EnemyHealth> e)
+    public void RemoveOnDeathEventListener(Action<EnemyHealth> e)
     {
         onDeath -= e;
     }
