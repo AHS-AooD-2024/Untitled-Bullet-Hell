@@ -791,6 +791,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 504547303270436171, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.53
+      objectReference: {fileID: 0}
     - target: {fileID: 1021309029728987137, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.22
@@ -835,6 +839,38 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557866868492203389, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204949673172422482, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 634431189}
     - target: {fileID: 4174703104024607720, guid: ff1285fd81e78e547bd3f72388391494, type: 3}
       propertyPath: m_Name
       value: Boss
