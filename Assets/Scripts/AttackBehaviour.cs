@@ -45,9 +45,9 @@ public class AttackBehaviour : MonoBehaviour {
         }
     }
 
-    public void Shoot(Projectile2D projectile, Vector2 offset) {
+    public void Shoot(Projectile2D projectile, Vector2 direction, Vector2 offset) {
         if(m_shootCooldownTime <= 0.0F) {
-            projectile.Launch(transform.position + transform.TransformDirection(offset), transform.TransformDirection(Vector2.up));
+            projectile.Launch(transform.position + transform.TransformDirection(offset), transform.TransformDirection(direction));
             m_shootCooldownTime = m_shootCooldownSeconds;
         }
     }
@@ -57,7 +57,8 @@ public class AttackBehaviour : MonoBehaviour {
         if(m_shootCooldownTime > 0.0F) m_shootCooldownTime -= deltaTime;
     }
     
-    public void Shoot(Projectile2D projectile) => Shoot(projectile, Vector2.zero);
+    public void Shoot(Projectile2D projectile) => Shoot(projectile, Vector2.up, Vector2.zero);
+    public void Shoot(Projectile2D projectile, Vector2 direction) => Shoot(projectile, direction, Vector2.zero);
 
     public void InterruptReload() {
         // Example:

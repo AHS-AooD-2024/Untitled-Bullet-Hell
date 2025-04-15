@@ -35,15 +35,8 @@ public class LegacyInputCharacterController : TopDownCharacterControllerBehaviou
             int w = Screen.width;
             int h = Screen.height;
 
-            // We need the mouse pos relative to the player, but the mouse pos
-            // and player pos are measured in wildly different spaces. So, we have
-            // to convert.
-            // Despite these being `Vector3`s, their z components should always be 0
-            // Vector3 ourPos = Camera.main.transform.position - transform.position;
-            // Nevermind, this doesn't actually work.
             Vector3 mousePxSpace = Input.mousePosition;
             Vector3 mouseGameSpace = new(mousePxSpace.x - w / 2, mousePxSpace.y - h / 2);
-            // m_look = mouseGameSpace - ourPos;
             m_look = mouseGameSpace;
         } 
         // If we are in the editor, m_doFollowMouse is able to change. In build, it
