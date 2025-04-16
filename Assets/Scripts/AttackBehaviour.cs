@@ -34,12 +34,14 @@ public class AttackBehaviour : MonoBehaviour {
     [SerializeField]
     private Animator m_animator;
 
-    public void Swing(float range, float breadth) => Swing(range, breadth, DamageInfo.one);
+    public void Swing(float range, float breadth) => Swing(Vector2.up, range, breadth, DamageInfo.one);
+    public void Swing(Vector2 direction, float range, float breadth) => Swing(direction, range, breadth, DamageInfo.one);
+    public void Swing(float range, float breadth, DamageInfo damageInfo) => Swing(Vector2.up, range, breadth, DamageInfo.one);
     
-    public void Swing(float range, float breadth, DamageInfo damageInfo) {
+    public void Swing(Vector2 direction, float range, float breadth, DamageInfo damageInfo) {
         if(IsOffCooldown){
             // m_animator.SetTrigger("On Swing");
-            Vector2 fwd = transform.TransformDirection(Vector3.up);
+            Vector2 fwd = transform.TransformDirection(direction);
             Vector2 pos2D = transform.position;
             Vector2 swingFrom = 0.5F * range * fwd + pos2D;
             float radius = breadth * 0.5F;
