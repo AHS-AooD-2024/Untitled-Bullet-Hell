@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 1
-  m_takeDamageFrom: 0000000001000000
+  m_takeDamageFrom: 2
   m_deadColor: {r: 1, g: 0, b: 0, a: 1}
   m_spriteRenderer: {fileID: 722209651}
 --- !u!1 &1790945320
