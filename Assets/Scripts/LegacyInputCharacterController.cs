@@ -32,12 +32,10 @@ public class LegacyInputCharacterController : TopDownCharacterControllerBehaviou
 
     void Update() {
         if(m_doFollowMouse) {
-            int w = Screen.width;
-            int h = Screen.height;
-
-            Vector3 mousePxSpace = Input.mousePosition;
-            Vector3 mouseGameSpace = new(mousePxSpace.x - w / 2, mousePxSpace.y - h / 2);
-            m_look = mouseGameSpace;
+            // Lol, there is a function for that already
+            // Thank you nathan -- S.
+            Vector3 mouseWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            m_look = mouseWorldSpace - transform.position;
         } 
         // If we are in the editor, m_doFollowMouse is able to change. In build, it
         // will never change, so this is actually not needed.

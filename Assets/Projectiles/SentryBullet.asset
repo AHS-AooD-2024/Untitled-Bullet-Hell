@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 139c9fc40ea4eca4b9dbb0354de27e0a, type: 3}
-  m_Name: CrossbowBolt
+  m_Name: SentryBullet
   m_EditorClassIdentifier: 
-  m_prefab: {fileID: 3341614303271026686, guid: 88009113914701344b10d0396afe990c, type: 3}
-  m_speed: 20
+  m_prefab: {fileID: 5530156388210549169, guid: 1a9688cd270ce6c40b94429ecc3da537, type: 3}
+  m_speed: 10
   m_damage:
-    damage: 2
-  m_lifespanSeconds: 5
-  m_alliance: 1
+    damage: 1
+  m_lifespanSeconds: 1
+  m_alliance: 2

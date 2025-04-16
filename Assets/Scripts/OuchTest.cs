@@ -8,9 +8,9 @@ public class OuchTest : MonoBehaviour {
     }
 
     public void OnHitByProjectile(ProjectileInstance2D proj) {
-        if(proj.prototype.alliance == Projectile2D.Alliance.PLAYER) {
+        if(proj.prototype.alliance == Alliance.PLAYER) {
             Debug.Log("Oof!");
-            proj.Consume();
+            proj.StickTo(gameObject);
         }
     }
 }

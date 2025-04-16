@@ -33,6 +33,9 @@ public class LegacyInputAttack : AttackBehaviour {
     private float m_breadth = 1.0F;
 
     [SerializeField]
+    private DamageInfo m_meleeDamage;
+
+    [SerializeField]
     private bool m_doAutoSwing = true;
 
     private bool m_doSwing = false;
@@ -63,5 +66,8 @@ public class LegacyInputAttack : AttackBehaviour {
 
     public void OnDash() {
         InterruptReload();
+        // prevent attacks during dash
+        m_doShoot = false;
+        m_doSwing = false;
     }
 }
