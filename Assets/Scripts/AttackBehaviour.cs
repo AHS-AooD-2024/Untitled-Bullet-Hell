@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Util;
 
 public class AttackBehaviour : MonoBehaviour {
     [Header("Cooldowns")]
@@ -34,21 +35,21 @@ public class AttackBehaviour : MonoBehaviour {
     private Animator m_animator;
 
     public void Swing(float range, float breadth) => Swing(range, breadth, DamageInfo.one);
+    
     public void Swing(float range, float breadth, DamageInfo damageInfo) {
         if(IsOffCooldown){
-            m_animator.SetTrigger("On Swing");
+            // m_animator.SetTrigger("On Swing");
             Vector2 fwd = transform.TransformDirection(Vector3.up);
             Vector2 pos2D = transform.position;
+            Vector2 swingFrom = 0.5F * range * fwd + pos2D;
             float radius = breadth * 0.5F;
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(pos2D, radius, fwd, range);
-            foreach (RaycastHit2D hit in hits) {
-                if(hit) {
-                    hit.transform.BroadcastMessage("OnHitBySwing", damageInfo, SendMessageOptions.DontRequireReceiver);
-                    // These lines are a bit scuffed and don't really represent the circle cast, but it is kinda close.
-                    // If we need better debug lines lmk -- S.
-                    Debug.DrawLine(pos2D, pos2D + range * fwd, Color.white, 1.0F);
-                    Debug.DrawLine(pos2D - Vector2.Perpendicular(fwd) * radius, pos2D + Vector2.Perpendicular(fwd) * radius, Color.white, 1.0F);
-                }
+            Vector2 boxSize = new(breadth, range * 0.5F);
+
+            Collider2D[] hits = Physics2D.OverlapBoxAll(swingFrom, boxSize, Vector2.SignedAngle(fwd, Vector2.up));
+            Debug.DrawLine(swingFrom, swingFrom + range * fwd, Color.white, 1.0F);
+            Debug.DrawLine(swingFrom - Vector2.Perpendicular(fwd) * breadth, swingFrom + Vector2.Perpendicular(fwd) * breadth, Color.white, 1.0F);
+            foreach (Collider2D hit in hits) {
+                hit.BroadcastMessage("OnHitBySwing", damageInfo, SendMessageOptions.DontRequireReceiver);
             }
             m_swingCooldownTime = m_swingCooldownSeconds;
         }

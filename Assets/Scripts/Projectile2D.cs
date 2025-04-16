@@ -4,12 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Projectile2D", menuName = "Projectile2D", order = 0)]
 public class Projectile2D : ScriptableObject { 
-    public enum Alliance {
-        NEUTRAL,
-        PLAYER,
-        ENEMY,
-    }
-
     [SerializeField]
     // private Sprite m_sprite;
     private GameObject m_prefab;
@@ -23,10 +17,7 @@ public class Projectile2D : ScriptableObject {
     [SerializeField]
     private float m_lifespanSeconds = 5.0F;
 
-    [SerializeField]
-    private Alliance m_alliance = Alliance.NEUTRAL;
-
-    public Alliance alliance { get => m_alliance; }
+    public Alliance alliance { get => m_damage.alliance; }
 
     public float speed { get => m_speed; }
 

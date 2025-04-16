@@ -4,4 +4,6 @@ public struct DamageInfo {
 
     // There will be more at some point
     public float damage;
+
+    public Alliance alliance;
 }

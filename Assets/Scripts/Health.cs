@@ -13,7 +13,7 @@ public class Health : MonoBehaviour {
     public bool IsAlive { get => !IsDead; }
 
     [SerializeField]
-    private Projectile2D.Alliance[] m_takeDamageFrom;
+    private Alliance[] m_takeDamageFrom;
 
     public void OnHitByProjectile(ProjectileInstance2D proj) {
         Debug.Log("hit");
@@ -23,8 +23,8 @@ public class Health : MonoBehaviour {
         }
     }
 
-    public bool TakesDamageFrom(Projectile2D.Alliance alliance) {
-        foreach (Projectile2D.Alliance a in m_takeDamageFrom) {
+    public bool TakesDamageFrom(Alliance alliance) {
+        foreach (Alliance a in m_takeDamageFrom) {
             if(a == alliance) {
                 return true;
             }
@@ -33,7 +33,9 @@ public class Health : MonoBehaviour {
     }
 
     public void OnHitBySwing(DamageInfo di) {
-        TakeDamage(di);
+        if(TakesDamageFrom(di.alliance)) {
+            TakeDamage(di);
+        }
     }
 
     public void TakeDamage(DamageInfo di) {
