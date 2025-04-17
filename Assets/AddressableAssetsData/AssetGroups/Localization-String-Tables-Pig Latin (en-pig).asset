@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Pig Latin (en-pig)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Pig Latin (en-pig)
+  m_GUID: dde4a2e4e9435494f8e7909f49eb9fc5
+  m_SerializeEntries:
+  - m_GUID: b054712bda07d9242ba0cde2bdbae2e4
+    m_Address: Tutorials_en-pig
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-pig
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 666272880fe2d524dbd0abef177719c6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f11ca2d9ef0119e48803ec168842cb6c, type: 2}
+    - {fileID: 11400000, guid: 78d1fe2b43c233c438db08d75c3d1488, type: 2}

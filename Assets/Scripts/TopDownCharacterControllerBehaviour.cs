@@ -93,6 +93,9 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
     public Vector3 LookRotation { get => Vector3.forward * LookAngle; }
 
     #if UNITY_EDITOR
+    [Header("Debug")]
+    [Space]
+
     [SerializeField]
     private TextMeshProUGUI m_debugText;
     #endif
@@ -197,7 +200,8 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
         }
 
         #if UNITY_EDITOR
-        m_debugText.text = state + "\n" + m_lookAngle;
+        if(m_debugText != null)
+            m_debugText.text = state + "\n" + m_lookAngle;
         #endif
 
         // TODO: changes between animations are a bit abrupt, and I know we can fix it by
