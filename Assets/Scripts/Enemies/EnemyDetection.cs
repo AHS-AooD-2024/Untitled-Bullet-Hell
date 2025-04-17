@@ -6,16 +6,7 @@ public class EnemyDetection : MonoBehaviour {
 
     [SerializeField] private EnemyState currentState = EnemyState.IDLE;
 
-    private event Action<EnemyState> onStateChanged;
-
-    public void AddStateEventListener(Action<EnemyState> actionListener)
-    {
-        onStateChanged += actionListener;
-    }
-    public void RemoveStateEventListener(Action<EnemyState> actionListener)
-    {
-        onStateChanged -= actionListener;
-    }
+    public event Action<EnemyState> onStateChanged;
     protected void ChangeState(EnemyState state)
     {
         if (currentState != state)
