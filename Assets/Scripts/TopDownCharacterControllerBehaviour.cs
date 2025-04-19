@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -177,27 +178,29 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
         // m_animator.SetFloat("Velocity X", m_velocity.x);
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
         // m_animator.SetBool("Is Dashing", m_isDashing);
-        string state = "";
+
+        StringBuilder sb = new(16);
 
         if(m_velocity.sqrMagnitude > 0.01F) {
-            state += "Move";
+            sb.Append("Move");
         } else {
-            state += "Idle";
+            sb.Append("Idle");
         }
 
         // note m_lookAngle is in degrees along the domain [-180, 180]
         if(m_lookAngle > -67.5F && m_lookAngle < 67.5F) {
-            state += " Up";
+            sb.Append(" Up");
         } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
-            state += " Down";
+            sb.Append(" Down");
         }
 
         if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
-            state += " Left";
-            // state += " Right"; 
+            sb.Append(" Left");
         } else if(m_lookAngle < -22.5F && m_lookAngle > -157.5F) {
-            state += " Right";
+            sb.Append(" Right");
         }
+
+        string state = sb.ToString();        
 
         #if UNITY_EDITOR
         if(m_debugText != null)
@@ -209,10 +212,13 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
         // would line up the passive breathing, etc.
         // The problem is that the animator stuff doesn't really do what I am looking for.
         // I tried something, but it just made the animations freeze for a while when they change.
+
+        // Exit time and stuff would also probably work
         
         // var stateInfo = m_animator.GetCurrentAnimatorStateInfo(-1);
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
+        
         m_animator.PlayInFixedTime(state);
     }
 

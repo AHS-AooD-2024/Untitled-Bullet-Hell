@@ -31,7 +31,10 @@ public class TriggerSign : MonoBehaviour {
     private float m_fadeOutDurationSeconds = 1.0F;
 
     [SerializeField]
-    private string m_triggererTag = "Player";
+    private String m_triggererTag = "Player";
+
+    [SerializeField]
+    private TagHandle m_triggererTagHandle;
 
     /// <summary>
     /// The number of things that are causing this sign to reveal its text.
@@ -44,6 +47,8 @@ public class TriggerSign : MonoBehaviour {
         if(m_tmp == null) {
             m_tmp = GetComponentInChildren<TextMeshProUGUI>();
         }
+
+        m_triggererTagHandle = TagHandle.GetExistingTag(m_triggererTag);
         
         HideText();
     }
@@ -55,13 +60,13 @@ public class TriggerSign : MonoBehaviour {
 
     private void HideText() {
         Debug.Log("Hiding");
-        m_tmp.CrossFadeAlpha(0.0F, m_fadeInDurationSeconds, false);
+        m_tmp.CrossFadeAlpha(0.0F, m_fadeOutDurationSeconds, false);
     }
 
     private bool CanTrigger(Collider2D collider) => collider.CompareTag(m_triggererTag);
 
     private void OnTriggerEnter2D(Collider2D other) {
-        // short circuit will keep the num tracker accurte
+        // short circuit will keep the num tracker accurate
         if (CanTrigger(other) && ++m_numThingsRevealing > 0) {
             ShowText();
         }
