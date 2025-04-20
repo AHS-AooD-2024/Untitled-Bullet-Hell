@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Pig Latin (en-pig)
   m_GUID: dde4a2e4e9435494f8e7909f49eb9fc5
   m_SerializeEntries:
+  - m_GUID: 63494d6ab7e54eb4d96ebffe9c65eab3
+    m_Address: Menu_en-pig
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-pig
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b054712bda07d9242ba0cde2bdbae2e4
     m_Address: Tutorials_en-pig
     m_ReadOnly: 1
