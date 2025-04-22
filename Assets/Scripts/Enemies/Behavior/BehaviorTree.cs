@@ -22,6 +22,7 @@ public class BehaviorTree
     /// <summary>
     /// Begins the Running the Behavior Tree
     /// </summary>
+    [ContextMenu("RUN TREE")]
     public void Start()
     {
         current = root;

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "BehaviorObject", menuName = "BehaviorObject")]
+
 public abstract class BehaviorObject : ScriptableObject
 {
     [field: SerializeField] public float Delay { get; set; } = 1f;

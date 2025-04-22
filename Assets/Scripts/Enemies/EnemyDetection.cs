@@ -45,6 +45,10 @@ public class EnemyDetection : MonoBehaviour {
         else ChangeState(EnemyState.IDLE);
     }
     public EnemyState GetState() => currentState;
+    public void OnGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
 }
 public enum EnemyState 
 {
