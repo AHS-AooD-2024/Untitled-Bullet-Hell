@@ -26,7 +26,7 @@ public class LegacyInputCharacterController : TopDownCharacterControllerBehaviou
         // We also might just hide the mouse and forego aiming
         // BoI style. 
         if(m_doFollowMouse){
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
         }
     }
 
