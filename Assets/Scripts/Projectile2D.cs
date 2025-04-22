@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Projectile2D", menuName = "Projectile2D", order = 0)]

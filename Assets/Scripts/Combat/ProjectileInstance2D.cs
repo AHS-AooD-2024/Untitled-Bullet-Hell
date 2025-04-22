@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace Combat {
+
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class ProjectileInstance2D : MonoBehaviour {
 
@@ -112,4 +114,6 @@ public class ProjectileInstance2D : MonoBehaviour {
         this.transform.SetParent(transform);
         m_rigidbody2D.linearVelocity = Vector2.zero;
     }
+}
+
 }

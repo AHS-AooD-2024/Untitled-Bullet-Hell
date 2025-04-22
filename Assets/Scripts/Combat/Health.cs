@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace Combat {
+
 public class Health : MonoBehaviour {
     [SerializeField]
     [Range(1.0F, 100.0F)]
@@ -38,4 +40,6 @@ public class Health : MonoBehaviour {
             BroadcastMessage("OnDeath", SendMessageOptions.DontRequireReceiver);
         }
     }
+}
+
 }
