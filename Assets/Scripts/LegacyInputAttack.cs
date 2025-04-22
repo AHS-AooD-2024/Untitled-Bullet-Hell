@@ -7,7 +7,7 @@ public class LegacyInputAttack : AttackBehaviour {
     [Space]
 
     [SerializeField]
-    private TopDownCharacterControllerBehaviour m_characterController;
+    private LookingGlass m_lookingGlass;
 
     [Header("Ranged")]
     [Space]
@@ -59,7 +59,7 @@ public class LegacyInputAttack : AttackBehaviour {
         }
 
         if(m_doShoot) {
-            Shoot(m_projectile, m_characterController.LookDirection, m_relativeOffset);
+            Shoot(m_projectile, m_lookingGlass.Direction, m_relativeOffset);
             m_doShoot = false;
         }
     }

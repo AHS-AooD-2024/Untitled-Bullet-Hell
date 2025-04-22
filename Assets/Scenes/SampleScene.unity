@@ -369,6 +369,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1353408468994325909, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
   m_PrefabInstance: {fileID: 6388662754589696068}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &634431188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6352043727644337332, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
+  m_PrefabInstance: {fileID: 6388662754589696068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634431185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7302d7cf1a43743b642768ee61e8fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &634431193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7414899485802584851, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
@@ -385,6 +396,7 @@ GameObject:
   - component: {fileID: 711909685}
   - component: {fileID: 711909684}
   - component: {fileID: 711909683}
+  - component: {fileID: 711909686}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -489,6 +501,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711909686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711909682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67debe9c409a707428f01d56cbca5bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_swingCooldownSeconds: 0.1
+  m_shootCooldownSeconds: 0.5
+  m_numReloadStages: 1
+  m_animator: {fileID: 0}
+  m_projectile: {fileID: 11400000, guid: 3cee6b1f59a503446b1293627da14c79, type: 2}
+  m_lookingGlass: {fileID: 711909683}
 --- !u!1 &722209650
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,10 +882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6352043727644337332, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
-      propertyPath: m_debugText
+    - target: {fileID: 4100373445019890026, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
+      propertyPath: m_lookingGlass
       value: 
-      objectReference: {fileID: 944332719}
+      objectReference: {fileID: 634431188}
     - target: {fileID: 7414899485802584851, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

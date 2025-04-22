@@ -9,7 +9,7 @@ using UnityEngine;
 /// to move a game object.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
-public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharacterController {
+public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharacterController {
 
     private Rigidbody2D m_rigidbody;
 
@@ -88,6 +88,8 @@ public class TopDownCharacterControllerBehaviour : MonoBehaviour, ITopDownCharac
     private float m_lookAngle = 0.0F;
 
     public Vector2 LookDirection { get => m_lookDirection; }
+
+    public override Vector2 Direction => LookDirection;
 
     public float LookAngle { get => m_lookAngle; }
 
