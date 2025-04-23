@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Combat {
+    
 public class LegacyInputAttack : AttackBehaviour {
 
     [Space]
@@ -70,4 +72,6 @@ public class LegacyInputAttack : AttackBehaviour {
         m_doShoot = false;
         m_doSwing = false;
     }
+}
+
 }

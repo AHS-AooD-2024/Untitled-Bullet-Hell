@@ -1,3 +1,5 @@
+namespace Combat {
+    
 [System.Serializable]
 public struct DamageInfo {
     public static DamageInfo one => new() {
@@ -9,4 +11,6 @@ public struct DamageInfo {
     public float damage;
 
     public Alliance alliance;
+}
+
 }

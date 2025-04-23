@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Util;
 
+namespace Combat {
+
 public class AttackBehaviour : MonoBehaviour {
     [Header("Cooldowns")]
     [Space]
@@ -96,4 +98,6 @@ public class AttackBehaviour : MonoBehaviour {
         float checkpoint = stagesDone * dt;
         m_shootCooldownTime = m_shootCooldownSeconds - checkpoint;
     }
+}
+
 }

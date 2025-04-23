@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace Combat {
+    
 public class PlayerHealth : Health {
     [SerializeField]
     private Color m_deadColor;
@@ -17,4 +19,6 @@ public class PlayerHealth : Health {
         m_spriteRenderer.color = m_deadColor;
         Debug.Log("I am dead!");
     }
+}
+
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Util {
+    
 public class Follow : MonoBehaviour {
     [SerializeField]
     private bool m_followXPosition;
@@ -33,4 +35,6 @@ public class Follow : MonoBehaviour {
             transform.rotation = m_followee.transform.rotation;
         }
     }
+}
+
 }

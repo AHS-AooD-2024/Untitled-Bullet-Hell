@@ -1,6 +1,9 @@
 using System;
+using Combat;
 using UnityEngine;
 
+namespace Util {
+    
 public class StickProjectiles : MonoBehaviour {
     [SerializeField]
     private Alliance m_interactWith = Alliance.NONE;
@@ -10,4 +13,6 @@ public class StickProjectiles : MonoBehaviour {
             proj.StickTo(this);
         }
     }
+}
+
 }
