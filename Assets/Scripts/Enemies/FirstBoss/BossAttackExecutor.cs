@@ -2,7 +2,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 
-public class BossAttackExecutor : MonoBehaviour
+public class BossAttackExecutor : MonoBehaviour, IExecutor
 {
     [SerializeField] private Transform sweepPoint;
     [SerializeField] private Transform sweepOrigin;

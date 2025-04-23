@@ -10,6 +10,6 @@ public abstract class BehaviorObject : ScriptableObject
     [SerializeField] protected List<BehaviorObject> nextBehaviors;
 
     public List<BehaviorObject> GetNextBehaviorsAsList() => nextBehaviors;
-    public abstract IEnumerator DoBehavior();
-    public abstract bool BehaviorCondition();
+    public abstract IEnumerator DoBehavior<T>(T executor) where T : IExecutor;
+    public abstract bool BehaviorCondition<T>(T executor) where T : IExecutor;
 }

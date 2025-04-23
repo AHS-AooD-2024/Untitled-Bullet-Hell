@@ -13,7 +13,7 @@ public class EnemyDetection : MonoBehaviour {
     protected void ChangeState(EnemyState state)
     {
         if (currentState != state)
-        {
+        { 
             currentState = state;
             onStateChanged?.Invoke(currentState);
         }

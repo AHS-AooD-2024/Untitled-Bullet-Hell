@@ -5,14 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BossBehaviorObject", menuName = "BossBehaviorObject")]
 public class BossBehavior : BehaviorObject
 {
-    [SerializeField] protected BossAttackExecutor executor;
-    public override bool BehaviorCondition()
+    public override bool BehaviorCondition<BossAttackExecutor>(BossAttackExecutor executor)
     {
-        return executor.SweepCondition();
+        executor.Swee
     }
 
-    public override IEnumerator DoBehavior()
+    public override IEnumerator DoBehavior<BossAttackExecutor>(BossAttackExecutor executor)
     {
-        yield return executor.PerformSweep();
+        throw new System.NotImplementedException();
     }
 }
