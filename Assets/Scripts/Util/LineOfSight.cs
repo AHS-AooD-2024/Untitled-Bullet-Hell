@@ -64,8 +64,8 @@ namespace Util {
         /// <param name="filter">A filter for things to ignore when checking line of sight.</param>
         /// <returns>A <see cref="LineOfSightCheck"/></returns>
         public static LineOfSight Check(Collider2D eye, Collider2D target, ContactFilter2D filter) {
+            EnsureRaycastCache();
             lock (m_raycastCache) {
-                EnsureRaycastCache();
                 
                 int n = Physics2D.Linecast(eye.transform.position, target.transform.position, filter, m_raycastCache);
 

@@ -6,7 +6,7 @@ public class DynamicWaypointMoveState : EntityState {
 
     private readonly Transform m_waypoint;
 
-    public DynamicWaypointMoveState(Transform follow, float timeout) {
+    public DynamicWaypointMoveState(Transform follow, float timeout = Mathf.Infinity) {
         m_waypoint = follow;
         m_timeout = timeout;
     }
