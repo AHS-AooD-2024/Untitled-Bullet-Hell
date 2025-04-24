@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 
 namespace Entities.States {
@@ -59,7 +61,7 @@ public abstract class EntityState {
     public EntityState next { get => m_next; }
     public bool hasNext { get => m_next != null; }
 
-    public EntityState prev { get => m_next; }
+    public EntityState prev { get => m_prev; }
     public bool hasPrev { get => m_prev != null; }
 
     private bool m_initFlag;
@@ -100,12 +102,27 @@ public abstract class EntityState {
         m_next.Imprint(m_info);
     }
 
+    // TODO: these
     protected void SetWaypoint(Vector2 position, float timeout = Mathf.Infinity) {
-
+        throw new NotImplementedException();
     }
 
     protected void SetWaypoint(Transform follow, float targetDistance = 0.0F, float timeout = Mathf.Infinity) {
+        throw new NotImplementedException();
+    }
 
+    protected void Shoot(Vector2 direction, Projectile2D projectile) {
+        throw new NotImplementedException();
+    }
+
+    protected void Swing(Collider2D hitboxShape, Vector2 direction, DamageInfo damageInfo) {
+        float angle = Vector2.Angle(Vector2.up, direction);
+        // Someone please make this cleaner - S.
+        List<Collider2D> results = new();
+        int n = hitboxShape.Overlap(transform.position, angle, results);
+        for (int i = 0; i < results.Count; i++) {
+            results[i].BroadcastMessage("OnHitBySwing", damageInfo, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     protected IdleState IdleFor(float seconds, string animation) {

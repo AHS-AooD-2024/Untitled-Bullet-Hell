@@ -56,7 +56,7 @@ public class LegacyInputAttack : AttackBehaviour {
         UpdateCooldowns(Time.fixedDeltaTime);
 
         if(m_doSwing) {
-            Swing(m_range, m_breadth);
+            Swing(m_lookingGlass.Direction, m_range, m_breadth);
             m_doSwing = false;
         }
 
