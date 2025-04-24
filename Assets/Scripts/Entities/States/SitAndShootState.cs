@@ -1,7 +1,7 @@
 using Entities.States;
 using UnityEngine;
 
-namespace Entities {
+namespace Entities.States {
     public class SitAndShoot : EntityState {
         private readonly float m_lifespan;
 
