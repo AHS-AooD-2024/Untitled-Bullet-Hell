@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Entities.States {
 
 [RequireComponent(typeof(Animator), typeof(Collider2D), typeof(ITopDownCharacterController))]
+[RequireComponent(typeof(LookingGlass))]
 public abstract class StateMachine : MonoBehaviour {
     private EntityState m_state;
 
@@ -22,6 +23,14 @@ public abstract class StateMachine : MonoBehaviour {
     // it can't be serialized as an interface ,_,
     private ITopDownCharacterController m_realController;
 
+    [SerializeField]
+    private LookingGlass m_lookingGlass;
+
+    /// <summary>
+    /// Gets the state that a state machine entity has at first. This will
+    /// only be called once and is the entrence into the state chain.
+    /// </summary>
+    /// <returns>The initial state of this entity</returns>
     protected abstract EntityState GetInitialState();
 
     private void Awake() {
@@ -45,13 +54,17 @@ public abstract class StateMachine : MonoBehaviour {
             m_realController = m_controller;
         }
 
+        if(m_lookingGlass == null) {
+            m_lookingGlass = GetComponent<LookingGlass>();
+        }
+
         m_state.Init(new EntityState.StateInfo {
             gameObject = gameObject, 
             animator = m_animator, 
-            collider = m_collider, 
-            player = m_player.gameObject, 
-            playerCollider = m_player,
+            collider = m_collider,
+            player = m_player,
             controller = m_realController,
+            lookingGlass = m_lookingGlass,
         });
     }
 

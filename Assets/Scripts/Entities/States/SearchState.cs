@@ -29,7 +29,7 @@ public class SearchState : EntityState {
     }
 
     protected override void OnUpdate() {
-        LineOfSight los = LineOfSight.Check(collider, playerCollider, m_filter);
+        LineOfSight los = LineOfSight.Check(collider, player, m_filter);
         if(los.HasLineOfSight && los.Hit.distance < m_sightRange) {
             Then(m_after);
         }
