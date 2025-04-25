@@ -37,6 +37,7 @@ namespace Entities {
                 Then(m_shootState);
             } else {
                 Vector2 directionToPlayer = player.transform.position - transform.position;
+
                 Debug.DrawLine(player.transform.position, transform.position);
                 
                 float deltaTheta = 2.0F * Mathf.PI / m_period * (m_doMoveClockwise ? -1.0F : 1.0F) * deltaTime;
@@ -47,16 +48,27 @@ namespace Entities {
 
                 Vector2 goal = (Vector2) player.transform.position + new Vector2(x, y);
 
-                #if UNITY_EDITOR
-                Gizmos2D.DrawCircle(goal, 0.5F);
+                // FIXME: The thing will bob about its goal position, which kinda sucks.
+                // I think it could be fixed with a PID controller, smoothing the acceleration
+                // makes it look not terrible, so this is low priority
+                if(IsCloseEnough(goal)) {
+                    controller.Move(Vector2.zero, directionToPlayer, false, deltaTime);
+                } else {
+                    #if UNITY_EDITOR
+                    Gizmos2D.DrawCircle(goal, 0.5F);
 
-                Debug.DrawLine(goal, transform.position);
-                #endif
+                    Debug.DrawLine(goal, transform.position);
+                    #endif
 
-                Vector2 directionToGoal = goal - (Vector2) transform.position;
-                directionToGoal.Normalize();
-                controller.Move(directionToGoal, directionToPlayer, false, deltaTime);
+                    Vector2 directionToGoal = goal - (Vector2) transform.position;
+                    directionToGoal.Normalize();
+                    controller.Move(directionToGoal, directionToPlayer, false, deltaTime);
+                }
             }
+        }
+
+        private bool IsCloseEnough(in Vector2 goal) {
+            return Vector2.Distance(transform.position, goal) < 0.1F;
         }
     }
 }

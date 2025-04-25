@@ -26,12 +26,18 @@ public abstract class StateMachine : MonoBehaviour {
     [SerializeField]
     private LookingGlass m_lookingGlass;
 
+    private EntityState.StateInfo m_info;
+
     /// <summary>
     /// Gets the state that a state machine entity has at first. This will
     /// only be called once and is the entrence into the state chain.
     /// </summary>
     /// <returns>The initial state of this entity</returns>
     protected abstract EntityState GetInitialState();
+
+    protected virtual EntityState GetDeathState() {
+        return new DeathState();
+    }
 
     private void Awake() {
         m_state = GetInitialState();
@@ -58,14 +64,16 @@ public abstract class StateMachine : MonoBehaviour {
             m_lookingGlass = GetComponent<LookingGlass>();
         }
 
-        m_state.Init(new EntityState.StateInfo {
+        m_info = new EntityState.StateInfo {
             gameObject = gameObject, 
             animator = m_animator, 
             collider = m_collider,
             player = m_player,
             controller = m_realController,
             lookingGlass = m_lookingGlass,
-        });
+        };
+
+        m_state.Init(m_info);
     }
 
     private void FixedUpdate() {
@@ -75,6 +83,13 @@ public abstract class StateMachine : MonoBehaviour {
             m_state = m_state.next;
             m_state.Enter();
         }
+    }
+
+    public void OnDeath() {
+        m_state.Exit();
+        m_state = GetDeathState();
+        m_state.Init(m_info);
+        m_state.Enter();
     }
 }
 

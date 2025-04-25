@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 111027209}
   - component: {fileID: 111027208}
   - component: {fileID: 111027207}
+  - component: {fileID: 111027214}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -154,14 +155,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_collider: {fileID: 111027211}
-  m_animator: {fileID: 0}
+  m_animator: {fileID: 111027209}
   m_player: {fileID: 948114080}
   m_controller: {fileID: 111027208}
   m_lookingGlass: {fileID: 111027208}
   m_sightRange: 10
-  m_shootInterval: 1
+  m_shootInterval: 3
   m_distanceFromPlayer: 4
-  m_revolutionaryPeriod: 3
+  m_revolutionaryPeriod: 6
   m_bullet: {fileID: 11400000, guid: 3cee6b1f59a503446b1293627da14c79, type: 2}
 --- !u!114 &111027208
 MonoBehaviour:
@@ -175,15 +176,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c012031c2d2600846abf7df472c02b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movementSmoothing: 0
+  m_movementSmoothing: 0.3
   m_movementSpeed: 8
   m_dashStartSpeedCoefficient: 8
   m_dashEndSpeedCoefficient: 8
   m_dashDurationSeconds: 0.5
   m_dashCooldownSeconds: 0.33
   m_doAutoDash: 1
-  m_animator: {fileID: 0}
-  m_doRotateTransform: 1
+  m_animator: {fileID: 111027209}
+  m_doRotateTransform: 0
   m_idleFace: {x: 0, y: 1}
   m_debugText: {fileID: 0}
 --- !u!95 &111027209
@@ -196,7 +197,7 @@ Animator:
   m_GameObject: {fileID: 111027206}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d989dde64b2ae24395c25fba1ef8663, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -231,7 +232,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -341,6 +342,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111027214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111027206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cf9f106dc76934f9433e346741233a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 1
+  m_takeDamageFrom: 3
 --- !u!1001 &337782026
 PrefabInstance:
   m_ObjectHideFlags: 0

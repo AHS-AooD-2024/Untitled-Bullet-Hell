@@ -21,5 +21,9 @@ namespace Entities {
         protected override EntityState GetInitialState() {
             return new SearchState(m_sightRange, new EyeCircleState(m_shootInterval, m_distanceFromPlayer, m_revolutionaryPeriod, m_bullet));
         }
+
+        protected override EntityState GetDeathState() {
+            return new DeathState();
+        }
     }
 }

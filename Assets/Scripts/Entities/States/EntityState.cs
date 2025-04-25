@@ -215,7 +215,9 @@ public abstract class EntityState {
     }
 
     public void PlayAnimation(string name) {
-        animator.PlayInFixedTime(name);
+        if(animator != null) {
+            animator.PlayInFixedTime(name);
+        }
     }
 }
 
