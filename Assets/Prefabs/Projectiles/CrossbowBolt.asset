@@ -16,5 +16,5 @@ MonoBehaviour:
   m_speed: 20
   m_damage:
     damage: 2
+    alliance: 2
   m_lifespanSeconds: 5
-  m_alliance: 1

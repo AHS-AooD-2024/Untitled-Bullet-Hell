@@ -6,7 +6,7 @@ public class StaticWaypointMoveState : EntityState {
 
     private readonly Vector2 m_waypoint;
 
-    public StaticWaypointMoveState(Vector2 position, float timeout) {
+    public StaticWaypointMoveState(Vector2 position, float timeout = Mathf.Infinity) {
         m_waypoint = position;
         m_timeout = timeout;
     }

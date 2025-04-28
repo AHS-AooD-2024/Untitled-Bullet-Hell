@@ -184,7 +184,7 @@ public abstract class EntityState {
     protected void Shoot(Projectile2D projectile) => Shoot(look.Direction, projectile);
 
     protected void Shoot(Vector2 direction, Projectile2D projectile) {
-        throw new NotImplementedException();
+        projectile.Launch(transform.position, direction);
     }
 
     protected void Swing(Collider2D hitboxShape, DamageInfo damageInfo) => Swing(hitboxShape, look.Direction, damageInfo);
@@ -215,7 +215,9 @@ public abstract class EntityState {
     }
 
     public void PlayAnimation(string name) {
-        animator.PlayInFixedTime(name);
+        if(animator != null) {
+            animator.PlayInFixedTime(name);
+        }
     }
 }
 
