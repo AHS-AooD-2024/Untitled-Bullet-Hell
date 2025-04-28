@@ -34,7 +34,7 @@ namespace Entities.States {
         protected override void OnUpdate() {
 
             if(m_doStare) {
-                controller.Move(Vector2.zero, player.transform.position - transform.position, false, deltaTime);
+                controller.Move(Vector2.zero, player.bounds.center - transform.position, false, deltaTime);
             } else {
                 controller.Move(Vector2.zero, false, deltaTime);
             }

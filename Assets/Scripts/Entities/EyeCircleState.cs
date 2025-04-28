@@ -36,7 +36,7 @@ namespace Entities {
             if(age > m_shootDelay) {
                 Then(m_shootState);
             } else {
-                Vector2 directionToPlayer = player.transform.position - transform.position;
+                Vector2 directionToPlayer = player.bounds.center - transform.position;
 
                 Debug.DrawLine(player.transform.position, transform.position);
                 
