@@ -53,6 +53,7 @@ namespace Entities.States {
                     Debug.DrawRay(transform.position, look.Direction * 100, Color.red, m_shotTimeInterval);
                     Shoot(dir, m_projectile);
                 }
+                PlayAnimation("Shoot");
                 m_nextShotTime += m_shotTimeInterval;
             }
         }
