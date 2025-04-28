@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Eye
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.47058827, y: -0.13461539}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 640
-      height: 320
-    spriteID: dcc40d1dea6d3234c9565236bfc7f8d3
+      width: 51
+      height: 52
+    spriteID: caf7083a7a0369f4280ea59dfb67e54a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -162,11 +162,11 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 640
-        height: 320
-      spriteId: dcc40d1dea6d3234c9565236bfc7f8d3
+        x: 8
+        y: 7
+        width: 51
+        height: 52
+      spriteId: caf7083a7a0369f4280ea59dfb67e54a
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -185,5 +185,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 640, y: 320}
-  previousTextureSize: {x: 1024, y: 512}
+  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 64, y: 64}
