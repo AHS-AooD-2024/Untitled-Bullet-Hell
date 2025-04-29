@@ -1,3 +1,5 @@
+using System.Collections;
+using Entities;
 using UnityEngine;
 
 namespace Combat {
@@ -16,6 +18,36 @@ public class Health : MonoBehaviour {
 
     [SerializeField]
     private Alliance m_takeDamageFrom;
+
+    [SerializeField]
+    private bool m_isFlying = false;
+
+    [SerializeField]
+    private bool m_isGrounded = false;
+
+    public void OnHitByHazard(HazardInstance hazard) {
+        print("HIT BY HAZARD");
+        if(
+            TakesDamageFrom(hazard.prototype.damage.alliance) && 
+            (hazard.prototype.affectFlying && m_isFlying || 
+            hazard.prototype.affectGrounded && m_isGrounded)
+        ) {
+            print("TAKING DAMAGE");
+            TakeDamage(hazard.prototype.damage);
+
+            Vector2 displacementDirection = hazard.transform.position - transform.position;
+            
+            transform.Translate(hazard.prototype.displacement * displacementDirection);
+            // StartCoroutine(DisplaceAfterTime(1.0F, hazard));
+        }
+    }
+
+    // private IEnumerator DisplaceAfterTime(float seconds, HazardInstance hazard) {
+    //     yield return new WaitForSeconds(seconds);
+    //     Vector2 displacementDirection = hazard.transform.position - transform.position;
+            
+    //     transform.Translate(hazard.prototype.displacement * displacementDirection);
+    // } 
 
     public void OnHitByProjectile(ProjectileInstance2D proj) {
         if(TakesDamageFrom(proj.alliance)){

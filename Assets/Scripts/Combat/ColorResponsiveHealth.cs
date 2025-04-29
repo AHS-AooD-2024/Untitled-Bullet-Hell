@@ -14,9 +14,16 @@ namespace Combat {
         [SerializeField]
         private float m_colorFadeDuration = 0.2F;
 
+        protected virtual void Awake() {
+            if(m_spriteRenderer == null) {
+                m_spriteRenderer = GetComponent<SpriteRenderer>();
+            }
+
+            m_defaultColor = m_spriteRenderer.color;
+        }
+
         public void OnTakeDamage() {
             if(IsAlive) {
-                m_defaultColor = m_spriteRenderer.color;
                 m_spriteRenderer.color = m_damageColor;
                 StartCoroutine(CrossFade(m_damageColor, m_defaultColor));   
             }
