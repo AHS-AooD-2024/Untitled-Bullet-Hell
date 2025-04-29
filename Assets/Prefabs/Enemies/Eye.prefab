@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4820774776457500526}
   - component: {fileID: 740037363282469825}
   - component: {fileID: 7695977920301315060}
-  - component: {fileID: 1804006103449672949}
+  - component: {fileID: 5523868906623019442}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_dashEndSpeedCoefficient: 8
   m_dashDurationSeconds: 0.5
   m_dashCooldownSeconds: 0.33
-  m_doAutoDash: 1
+  m_canDashControl: 1
   m_animator: {fileID: 6253781628223891464}
   m_doRotateTransform: 1
   m_idleFace: {x: 0, y: 1}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_collider: {fileID: 5553679089720140599}
   m_animator: {fileID: 6253781628223891464}
-  m_player: {fileID: 0}
+  m_player: {fileID: 6617090064569851376, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
   m_controller: {fileID: 740037363282469825}
   m_lookingGlass: {fileID: 740037363282469825}
   m_sightRange: 10
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_distanceFromPlayer: 4
   m_revolutionaryPeriod: 6
   m_bullet: {fileID: 11400000, guid: 25b6b6b673031b94b87c5e8af6cebdce, type: 2}
---- !u!114 &1804006103449672949
+--- !u!114 &5523868906623019442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,11 +233,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1741547348461722351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54cf9f106dc76934f9433e346741233a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eeec78005a8feb4eba751e0c588a020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 1
   m_takeDamageFrom: 3
+  m_spriteRenderer: {fileID: 6434774008710596939}
+  m_damageColor: {r: 1, g: 0, b: 0, a: 1}
+  m_colorFadeDuration: 0.2
 --- !u!1001 &7717355436028959151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,3 +333,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &6434774008710596939 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: 0d0f9b27d82022e4c9566ae245b58be1, type: 3}
+  m_PrefabInstance: {fileID: 7717355436028959151}
+  m_PrefabAsset: {fileID: 0}
