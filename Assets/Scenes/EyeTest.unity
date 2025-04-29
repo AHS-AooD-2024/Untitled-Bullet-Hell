@@ -313,10 +313,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4100373445019890026, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
-      propertyPath: m_lookingGlass
-      value: 
-      objectReference: {fileID: 948114083}
     - target: {fileID: 7414899485802584851, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -367,17 +363,6 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6617090064569851376, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
   m_PrefabInstance: {fileID: 557453588}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &948114083 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6352043727644337332, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
-  m_PrefabInstance: {fileID: 557453588}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7302d7cf1a43743b642768ee61e8fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5908303481869867205
 PrefabInstance:
   m_ObjectHideFlags: 0

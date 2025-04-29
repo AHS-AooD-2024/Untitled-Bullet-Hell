@@ -211,11 +211,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_movementSmoothing: 0.05
   m_movementSpeed: 4
-  m_dashStartSpeedCoefficient: 8
-  m_dashEndSpeedCoefficient: 2
+  m_dashStartSpeedCoefficient: 6
+  m_dashEndSpeedCoefficient: 0
   m_dashDurationSeconds: 0.4
   m_dashCooldownSeconds: 0.33
-  m_doAutoDash: 1
+  m_canDashControl: 0
   m_animator: {fileID: 8554031005313072125}
   m_doRotateTransform: 0
   m_idleFace: {x: 0, y: 1}
@@ -237,15 +237,15 @@ MonoBehaviour:
   m_shootCooldownSeconds: 0.5
   m_numReloadStages: 1
   m_animator: {fileID: 0}
-  m_characterController: {fileID: 6352043727644337332}
+  m_lookingGlass: {fileID: 6352043727644337332}
   m_projectile: {fileID: 11400000, guid: 5ce865a4315a1c84dbd37cd1c334d11a, type: 2}
   m_doAutoFire: 1
   m_relativeOffset: {x: 0, y: 0}
   m_range: 1
   m_breadth: 0.5
   m_meleeDamage:
-    damage: 0
-    alliance: 0
+    damage: 1
+    alliance: 2
   m_doAutoSwing: 1
 --- !u!50 &280134650382086326
 Rigidbody2D:
