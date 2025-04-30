@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Entities.States {
 
-[RequireComponent(typeof(Animator), typeof(Collider2D), typeof(ITopDownCharacterController))]
+[RequireComponent(typeof(Collider2D), typeof(ITopDownCharacterController))]
 [RequireComponent(typeof(LookingGlass))]
 public abstract class StateMachine : MonoBehaviour {
     private EntityState m_state;
@@ -28,6 +28,8 @@ public abstract class StateMachine : MonoBehaviour {
 
     private EntityState.StateInfo m_info;
 
+    protected Collider2D player { get => m_info.player; }
+
     /// <summary>
     /// Gets the state that a state machine entity has at first. This will
     /// only be called once and is the entrence into the state chain.
@@ -40,8 +42,6 @@ public abstract class StateMachine : MonoBehaviour {
     }
 
     private void Awake() {
-        m_state = GetInitialState();
-
         if(m_animator == null) {
             m_animator = GetComponent<Animator>();
         }
@@ -72,6 +72,8 @@ public abstract class StateMachine : MonoBehaviour {
             controller = m_realController,
             lookingGlass = m_lookingGlass,
         };
+        
+        m_state = GetInitialState();
 
         m_state.Init(m_info);
     }

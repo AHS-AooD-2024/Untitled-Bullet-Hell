@@ -8,7 +8,7 @@ using UnityEngine;
 /// A character controller <see cref="MonoBehaviour"/> that uses a <see cref="Rigidbody2D"/>
 /// to move a game object.
 /// </summary>
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharacterController {
 
     private Rigidbody2D m_rigidbody;
