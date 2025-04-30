@@ -232,6 +232,10 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         m_animator.PlayInFixedTime(state);
     }
 
+    public void Stop() {
+        m_rigidbody.linearVelocity = Vector2.zero;
+    }
+
     /// <summary>
     /// Causes the transform's scale to be negative when looking left and vice versa.
     /// </summary>
