@@ -4,6 +4,9 @@ using UnityEngine;
 namespace Combat {    
     public class ColorResponsiveHealth : Health {
         [SerializeField]
+        private float m_iframeFlashInterval = 0.0F;
+
+        [SerializeField]
         private SpriteRenderer m_spriteRenderer;
 
         [SerializeField]
@@ -20,6 +23,14 @@ namespace Combat {
             }
 
             m_defaultColor = m_spriteRenderer.color;
+        }
+
+        protected override void FixedUpdate() {
+            base.FixedUpdate();
+            if(m_iframeFlashInterval > 0.0F && IsInIframes()) {
+                float alpha = 1.0F - Mathf.PingPong(normalizedIframTime / m_iframeFlashInterval * 2.0F, 1.0F);
+                m_spriteRenderer.color = new(m_spriteRenderer.color.r, m_spriteRenderer.color.g, m_spriteRenderer.color.b, alpha);
+            }
         }
 
         public void OnTakeDamage() {

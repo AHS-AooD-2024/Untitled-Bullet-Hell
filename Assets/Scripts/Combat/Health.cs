@@ -25,7 +25,30 @@ public class Health : MonoBehaviour {
     [SerializeField]
     private bool m_isGrounded = false;
 
+    [Header("I-Frames")]
+    [Space]
+    
+    [SerializeField]
+    private float m_damageGracePeriod = 0.2F;
+    public float damageGracePeriod => m_damageGracePeriod;
+
+    private float m_iframeTime = 0.0F;
+    public float iframeTime => m_iframeTime;
+    public float normalizedIframTime => iframeTime / damageGracePeriod;
+
+    protected virtual void FixedUpdate() {
+        if(m_iframeTime >= 0.0F) {
+            m_iframeTime -= Time.fixedDeltaTime;
+        }
+    }
+
+    public bool IsInIframes() {
+        return m_iframeTime >= 0.0F;
+    }
+
     public void OnHitByHazard(HazardInstance hazard) {
+        if(IsInIframes()) return;
+
         print("HIT BY HAZARD");
         if(
             TakesDamageFrom(hazard.prototype.damage.alliance) && 
@@ -50,6 +73,7 @@ public class Health : MonoBehaviour {
     // } 
 
     public void OnHitByProjectile(ProjectileInstance2D proj) {
+        if(IsInIframes()) return;
         if(TakesDamageFrom(proj.alliance)){
             TakeDamage(proj.damage);
         }
@@ -60,12 +84,14 @@ public class Health : MonoBehaviour {
     }
 
     public void OnHitBySwing(DamageInfo di) {
+        if(IsInIframes()) return;
         if(TakesDamageFrom(di.alliance)) {
             TakeDamage(di);
         }
     }
 
     public void TakeDamage(DamageInfo di) {
+        m_iframeTime = m_damageGracePeriod;
         m_damageTaken += di.damage;
         BroadcastMessage("OnTakeDamage", di, SendMessageOptions.DontRequireReceiver);
         if(IsDead) {
