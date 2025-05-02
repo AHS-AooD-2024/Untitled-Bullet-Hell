@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Nevelson.Topdown2DPitfall.Assets.Scripts.Utils;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ using UnityEngine;
 /// to move a game object.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharacterController {
+public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharacterController, IPitfallCheck, IPitfallObject {
 
     private Rigidbody2D m_rigidbody;
 
@@ -107,6 +108,8 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     private TextMeshProUGUI m_debugText;
     #endif
 
+    private bool m_frozen;
+
     protected virtual void Awake() {
         m_idleFace.Normalize();
         if(m_idleFace == Vector2.zero) {
@@ -127,6 +130,11 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     }
 
     public void Move(Vector2 movement, Vector2 look, bool doDash, float deltaTime) {
+        if(m_frozen) {
+            m_rigidbody.linearVelocity = Vector2.zero;
+            return;
+        }
+
         if (doDash && !m_isDashing) {
             m_isDashing = true;
             BroadcastMessage("OnDashStart", SendMessageOptions.DontRequireReceiver);
@@ -247,5 +255,17 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             scale.x *= -1.0F;
             transform.localScale = scale;
         }
+    }
+
+    public bool PitfallConditionCheck() {
+        return !IsDashing;
+    }
+
+    public void PitfallActionsBefore() {
+        m_frozen = true;
+    }
+
+    public void PitfallResultingAfter() {
+        m_frozen = false;
     }
 }
