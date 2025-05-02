@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5023370661215163497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7497191726573457429}
+  - component: {fileID: 4244500679391645640}
+  - component: {fileID: 2283984952403270637}
+  m_Layer: 0
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7497191726573457429
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023370661215163497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 171.88, y: -40.179993}
+  m_SizeDelta: {x: 343.76, y: 80.36}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4244500679391645640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023370661215163497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa474001ce9e75a5ca23eabca95e8ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padding: {x: 10, y: 5}
+  HeartScale: {x: 0.5, y: 0.5, z: 0.5}
+  heartSize: 100
+  background: {fileID: 4286138985653329701, guid: 9c8ba2f075e86807eafcf39de431b6b3, type: 3}
+  heartPrefab: {fileID: 1319737820782281150, guid: 8f0b66c05815876968d2beb6ae7d91ea, type: 3}
+  health: {fileID: 2283984952403270637}
+--- !u!114 &2283984952403270637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023370661215163497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d30d034c36ec8b44acb4929cd28272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 4.1
+  m_takeDamageFrom: 0
+  m_deadColor: {r: 0, g: 0, b: 0, a: 0}
+  m_spriteRenderer: {fileID: 0}
+  healthBar: {fileID: 4244500679391645640}
