@@ -67,7 +67,8 @@ namespace Util {
             EnsureRaycastCache();
             lock (m_raycastCache) {
                 
-                int n = Physics2D.Linecast(eye.transform.position, target.transform.position, filter, m_raycastCache);
+                // Debug.DrawLine(eye.transform.position, target.transform.position, Color.blue);
+                int n = Physics2D.Linecast(eye.bounds.center, target.bounds.center, filter, m_raycastCache);
 
                 for(int i = 0; i < n; i++) {
                     RaycastHit2D hit = m_raycastCache[i];
