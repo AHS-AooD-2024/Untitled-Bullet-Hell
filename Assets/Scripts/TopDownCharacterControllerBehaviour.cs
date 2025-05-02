@@ -62,9 +62,13 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     private float m_dashCooldownSeconds = 0.33F;
     public float DashCooldownSeconds { get => m_dashCooldownSeconds; }
 
+    /// <summary>
+    /// Whether the character's movement direction can change during a dash.
+    /// Disable for dodge-roll like dashing.
+    /// </summary>
     [SerializeField]
-    private bool m_doAutoDash = true;
-    public bool DoAutoDash { get => m_doAutoDash; }
+    private bool m_canDashControl = true;
+    public bool CanDashControl { get => m_canDashControl; }
 
     private float m_dashTime = 0.0F;
     private float m_dashCooldownTime = 0.0F;
@@ -123,12 +127,16 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     }
 
     public void Move(Vector2 movement, Vector2 look, bool doDash, float deltaTime) {
-        m_move = movement.normalized;
-        m_targetVelocity = m_move * m_movementSpeed;
         if (doDash && !m_isDashing) {
             m_isDashing = true;
             BroadcastMessage("OnDashStart", SendMessageOptions.DontRequireReceiver);
         }
+
+        // disallow changing direction while dashing, unless we have dash control
+        if(m_canDashControl || !m_isDashing) {
+            m_move = movement.normalized;
+        }
+        m_targetVelocity = m_move * m_movementSpeed;
 
         look.Normalize();
 
@@ -222,6 +230,10 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // m_animator.PlayInFixedTime(state, -1, t);
         
         m_animator.PlayInFixedTime(state);
+    }
+
+    public void Stop() {
+        m_rigidbody.linearVelocity = Vector2.zero;
     }
 
     /// <summary>

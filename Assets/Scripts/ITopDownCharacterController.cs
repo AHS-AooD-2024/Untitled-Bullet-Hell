@@ -106,4 +106,9 @@ public interface ITopDownCharacterController {
     /// <param name="deltaTime">The time in seconds between individual calls 
     /// of <c>Move</c>. By default, this will be <see cref="Time.deltaTime"/></param>
     void Move(Vector2 movement, Vector2 look, bool doDash, float deltaTime);
+
+    /// <summary>
+    /// Stops the character.
+    /// </summary>
+    void Stop();
 }
