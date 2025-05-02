@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: baf51a99397ec3d42a78e01938ea6a46
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186763
+  packageName: Untitled
+  packageVersion: 1.0
+  assetPath: Assets/Topdown2DPitfall/DemoScene/DemoPrefabs/Tilemap.prefab
+  uploadId: 410496

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7f47e42773776c747a8f78f78467a2d0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186763
+  packageName: Untitled
+  packageVersion: 1.0
+  assetPath: Assets/Topdown2DPitfall/Scripts/Utils/Constants.cs
+  uploadId: 410496
