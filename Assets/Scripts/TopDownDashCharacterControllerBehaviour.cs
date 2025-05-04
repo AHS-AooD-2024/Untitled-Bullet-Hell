@@ -10,9 +10,13 @@ using UnityEngine;
 /// to move a game object.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharacterController, IPitfallObject {
+public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDashCharacterController, IPitfallCheck, IPitfallObject {
 
     private Rigidbody2D m_rigidbody;
+
+    public bool IsDashing { get => m_isDashing; }
+
+    private bool m_isDashing = false;
 
     public Vector2 Velocity { get => m_velocity; }
 
@@ -37,6 +41,39 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
 
     public float MovementSpeed { get => m_movementSpeed; }
 
+    [Header("Dashing")]
+    [Space]
+
+    [SerializeField]
+    private float m_dashStartSpeedCoefficient = 8.0F;
+
+    [SerializeField]
+    private float m_dashEndSpeedCoefficient = 8.0F;
+    public float DashSpeedCoefficient(float t) {
+        return Mathf.Lerp(m_dashStartSpeedCoefficient, m_dashEndSpeedCoefficient, t);
+    }
+
+    [SerializeField]
+    private float m_dashDurationSeconds = 0.5F;
+
+    public float DashDurationSeconds { get => m_dashDurationSeconds; }
+
+    [SerializeField]
+    [Range(0.0F, 1.0F)]
+    private float m_dashCooldownSeconds = 0.33F;
+    public float DashCooldownSeconds { get => m_dashCooldownSeconds; }
+
+    /// <summary>
+    /// Whether the character's movement direction can change during a dash.
+    /// Disable for dodge-roll like dashing.
+    /// </summary>
+    [SerializeField]
+    private bool m_canDashControl = true;
+    public bool CanDashControl { get => m_canDashControl; }
+
+    private float m_dashTime = 0.0F;
+    private float m_dashCooldownTime = 0.0F;
+
     [Header("Animation")]
     [Space]
 
@@ -45,6 +82,12 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
 
     [SerializeField]
     private bool m_doRotateTransform = true;
+
+    /// <summary>
+    /// The direction the character faces idly. This is used for automatic rotation.
+    /// </summary>
+    [SerializeField]
+    private Vector2 m_idleFace = Vector2.up;
 
     private Vector2 m_lookDirection = Vector2.zero;
     private float m_lookAngle = 0.0F;
@@ -68,6 +111,11 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     private bool m_frozen;
 
     protected virtual void Awake() {
+        m_idleFace.Normalize();
+        if(m_idleFace == Vector2.zero) {
+            Debug.LogError("Cannot face a zero direction.");
+        }
+
         if(m_animator == null) {
             m_animator = GetComponent<Animator>();
         }
@@ -89,9 +137,35 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             return;
         }
 
+        if (doDash && !m_isDashing) {
+            m_isDashing = true;
+            BroadcastMessage("OnDashStart", SendMessageOptions.DontRequireReceiver);
+        }
+
+        // disallow changing direction while dashing, unless we have dash control
+        if(m_canDashControl || !m_isDashing) {
+            m_move = movement.normalized;
+        }
         m_targetVelocity = m_move * m_movementSpeed;
 
         look.Normalize();
+
+        if(m_isDashing && m_dashCooldownTime <= 0.0F) {
+            if(m_dashTime < m_dashDurationSeconds) {
+                m_dashTime += deltaTime;
+                m_targetVelocity *= DashSpeedCoefficient(m_dashTime / m_dashDurationSeconds);
+                BroadcastMessage("OnDash", SendMessageOptions.DontRequireReceiver);
+            } else {
+                m_dashTime = 0.0F;
+                m_dashCooldownTime = m_dashCooldownSeconds;
+                m_isDashing = false;
+                BroadcastMessage("OnDashEnd", SendMessageOptions.DontRequireReceiver);
+            }
+        }
+
+        if (m_dashCooldownTime > 0.0F) {
+            m_dashCooldownTime -= deltaTime;
+        }
 
         m_velocity = Vector2.SmoothDamp(
             m_velocity, 
@@ -113,7 +187,7 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             // Rotate the object to face the direction it is moving in.
             m_lookDirection = m_move;
         }
-        m_lookAngle = Vector2.SignedAngle(Vector2.up, m_lookDirection);
+        m_lookAngle = Vector2.SignedAngle(m_idleFace, m_lookDirection);
 
         if(m_doRotateTransform) {
             transform.localEulerAngles = LookRotation;
@@ -183,6 +257,10 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             scale.x *= -1.0F;
             transform.localScale = scale;
         }
+    }
+
+    public bool PitfallConditionCheck() {
+        return !IsDashing;
     }
 
     public void PitfallActionsBefore() {

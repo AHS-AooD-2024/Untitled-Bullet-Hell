@@ -39,7 +39,9 @@ namespace Nevelson.Topdown2DPitfall.Assets.Scripts.Utils {
 
         private void TriggerPitfallOnPitfallColliders() {
             foreach (var bound in bounds) {
+#pragma warning disable CS0618 // Type or member is obsolete
                 pitfallObjCount = Physics2D.OverlapBoxNonAlloc(bound.center, bound.extents * 2, 0, results, whatIsPitfall);
+#pragma warning restore CS0618 // Type or member is obsolete
                 if (pitfallObjCount > 0) {
                     Collider2D[] objsInPit = Physics2D.OverlapBoxAll(bound.center, bound.extents * 2, 0, whatIsPitfall);
                     foreach (var collider in objsInPit) {
