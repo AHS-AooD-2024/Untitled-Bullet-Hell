@@ -52,7 +52,7 @@ namespace Entities {
                 // I think it could be fixed with a PID controller, smoothing the acceleration
                 // makes it look not terrible, so this is low priority
                 if(IsCloseEnough(goal)) {
-                    controller.Move(Vector2.zero, directionToPlayer, false, deltaTime);
+                    controller.Move(Vector2.zero, directionToPlayer, deltaTime);
                 } else {
                     #if UNITY_EDITOR
                     Gizmos2D.DrawCircle(goal, 0.5F);
@@ -62,7 +62,7 @@ namespace Entities {
 
                     Vector2 directionToGoal = goal - (Vector2) transform.position;
                     directionToGoal.Normalize();
-                    controller.Move(directionToGoal, directionToPlayer, false, deltaTime);
+                    controller.Move(directionToGoal, directionToPlayer, deltaTime);
                 }
             }
         }

@@ -25,7 +25,7 @@ public class DynamicWaypointMoveState : EntityState {
             // TODO: nav mesh or something
             Vector2 pq = m_waypoint.position - transform.position;
             pq.Normalize();
-            controller.Move(pq, false, deltaTime);
+            controller.Move(pq, deltaTime);
         }
     }
 

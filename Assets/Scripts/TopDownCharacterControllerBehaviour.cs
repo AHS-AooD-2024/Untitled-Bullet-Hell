@@ -125,32 +125,28 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
         // m_animator.SetBool("Is Dashing", m_isDashing);
 
-        StringBuilder sb = new(16);
+        int a = 0;
 
         if(m_velocity.sqrMagnitude > 0.01F) {
-            sb.Append("Move");
-        } else {
-            sb.Append("Idle");
+            a += TopDownDashCharacterControllerBehaviour.MOVE;
         }
 
         // note m_lookAngle is in degrees along the domain [-180, 180]
         if(m_lookAngle > -67.5F && m_lookAngle < 67.5F) {
-            sb.Append(" Up");
+            a += TopDownDashCharacterControllerBehaviour.UP;
         } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
-            sb.Append(" Down");
+            a += TopDownDashCharacterControllerBehaviour.DOWN;
         }
 
         if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
-            sb.Append(" Left");
+            a += TopDownDashCharacterControllerBehaviour.LEFT;
         } else if(m_lookAngle < -22.5F && m_lookAngle > -157.5F) {
-            sb.Append(" Right");
+            a += TopDownDashCharacterControllerBehaviour.RIGHT;
         }
-
-        string state = sb.ToString();        
 
         #if UNITY_EDITOR
         if(m_debugText != null)
-            m_debugText.text = state + "\n" + m_lookAngle;
+            m_debugText.text = "\n" + m_lookAngle;
         #endif
 
         // TODO: changes between animations are a bit abrupt, and I know we can fix it by
@@ -165,7 +161,7 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
         
-        m_animator.PlayInFixedTime(state);
+        m_animator.PlayInFixedTime(TopDownDashCharacterControllerBehaviour.m_animations[a]);
     }
 
     public void Stop() {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -100,6 +101,39 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
 
     public Vector3 LookRotation { get => Vector3.forward * LookAngle; }
 
+        // This might be a bit complicated
+    // basically I am mapping the hash id of animations to an addition
+    // of some relatively magic numbers.
+    internal const int UP    = 1;
+    internal const int DOWN  = 2;
+    internal const int LEFT  = 4;
+    internal const int RIGHT = 7;
+
+    internal const int MOVE = 10;
+    internal const int DASH = 20;
+
+    internal static readonly int[] m_animations = {
+        0, // 0 is invalid
+        Animator.StringToHash("Idle Up"), Animator.StringToHash("Idle Down"),
+        0, // UP + DOWN is invalid
+        Animator.StringToHash("Idle Left"), Animator.StringToHash("Idle Up Left"), Animator.StringToHash("Idle Down Left"),
+        Animator.StringToHash("Idle Right"), Animator.StringToHash("Idle Up Right"), Animator.StringToHash("Idle Down Right"),
+        0, // just MOVE is invalid
+        Animator.StringToHash("Move Up"), Animator.StringToHash("Move Down"),
+        0, // MOVE + UP + DOWN is invalid
+        // unfortunately, LEFT + RIGHT will hit index 11, which is MOVE + UP.
+        // removing this would require more "holes" though.
+        Animator.StringToHash("Move Left"), Animator.StringToHash("Move Up Left"), Animator.StringToHash("Move Down Left"),
+        Animator.StringToHash("Move Right"), Animator.StringToHash("Move Up Right"), Animator.StringToHash("Move Down Right"),
+        0, // just DASH is invalid
+        Animator.StringToHash("Dash Up"), Animator.StringToHash("Dash Down"),
+        0, // DASH + UP + DOWN is invalid
+        // unfortunately, MOVE + LEFT + RIGHT will hit index 21, which is DASH + UP.
+        // removing this would require more "holes" though.
+        Animator.StringToHash("Dash Left"), Animator.StringToHash("Dash Up Left"), Animator.StringToHash("Dash Down Left"),
+        Animator.StringToHash("Dash Right"), Animator.StringToHash("Dash Up Right"), Animator.StringToHash("Dash Down Right"),
+    };
+
     #if UNITY_EDITOR
     [Header("Debug")]
     [Space]
@@ -199,32 +233,28 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
         // m_animator.SetBool("Is Dashing", m_isDashing);
 
-        StringBuilder sb = new(16);
+        int a = 0;
 
         if(m_velocity.sqrMagnitude > 0.01F) {
-            sb.Append("Move");
-        } else {
-            sb.Append("Idle");
+            a += MOVE;
         }
 
         // note m_lookAngle is in degrees along the domain [-180, 180]
         if(m_lookAngle > -67.5F && m_lookAngle < 67.5F) {
-            sb.Append(" Up");
+            a += UP;
         } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
-            sb.Append(" Down");
+            a += DOWN;
         }
 
         if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
-            sb.Append(" Left");
+            a += LEFT;
         } else if(m_lookAngle < -22.5F && m_lookAngle > -157.5F) {
-            sb.Append(" Right");
-        }
-
-        string state = sb.ToString();        
+            a += RIGHT;
+        }        
 
         #if UNITY_EDITOR
         if(m_debugText != null)
-            m_debugText.text = state + "\n" + m_lookAngle;
+            m_debugText.text = m_lookAngle.ToString();
         #endif
 
         // TODO: changes between animations are a bit abrupt, and I know we can fix it by
@@ -239,7 +269,7 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
         
-        m_animator.PlayInFixedTime(state);
+        m_animator.PlayInFixedTime(m_animations[a]);
     }
 
     public void Stop() {
