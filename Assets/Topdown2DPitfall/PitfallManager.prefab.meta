@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d8fc1eba0016dc649aafb88a6d56a928
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186763
+  packageName: Untitled
+  packageVersion: 1.0
+  assetPath: Assets/Topdown2DPitfall/PitfallManager.prefab
+  uploadId: 410496

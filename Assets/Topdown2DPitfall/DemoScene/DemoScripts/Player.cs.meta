@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: bcb591bfa08030047927a4cd5914e4ac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186763
+  packageName: Untitled
+  packageVersion: 1.0
+  assetPath: Assets/Topdown2DPitfall/DemoScene/DemoScripts/Player.cs
+  uploadId: 410496

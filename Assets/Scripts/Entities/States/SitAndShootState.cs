@@ -25,7 +25,7 @@ namespace Entities.States {
 
         protected override void OnEnter() {
             m_nextShotTime = 0.0F;
-            controller.Move(Vector2.zero, false, deltaTime);
+            controller.Move(Vector2.zero, deltaTime);
         }
 
         protected override void OnExit() {
@@ -34,9 +34,9 @@ namespace Entities.States {
         protected override void OnUpdate() {
 
             if(m_doStare) {
-                controller.Move(Vector2.zero, player.bounds.center - transform.position, false, deltaTime);
+                controller.Move(Vector2.zero, player.bounds.center - transform.position, deltaTime);
             } else {
-                controller.Move(Vector2.zero, false, deltaTime);
+                controller.Move(Vector2.zero, deltaTime);
             }
             
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
-public class LegacyInputCharacterController : TopDownCharacterControllerBehaviour {
+public class LegacyInputCharacterController : TopDownDashCharacterControllerBehaviour {
 
     /// <summary>
     /// Whether the charcter look should follow the mouse.
