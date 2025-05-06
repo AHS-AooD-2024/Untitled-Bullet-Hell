@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -183,12 +184,13 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             transform.localEulerAngles = LookRotation;
         }
 
-        // FaceTransform();
+        FaceTransform();
 
         // m_animator.SetFloat("Velocity X", m_velocity.x);
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
         // m_animator.SetBool("Is Dashing", m_isDashing);
 
+        
         StringBuilder sb = new(16);
 
         if(m_velocity.sqrMagnitude > 0.01F) {
@@ -196,22 +198,33 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         } else {
             sb.Append("Idle");
         }
-
+    
         // note m_lookAngle is in degrees along the domain [-180, 180]
         if(m_lookAngle > -67.5F && m_lookAngle < 67.5F) {
             sb.Append(" Up");
-        } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
+        } else /*if(m_lookAngle > 112.5F || m_lookAngle < -112.5F)*/ {
             sb.Append(" Down");
         }
-
+        /*
         if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
-            sb.Append(" Left");
+            sb.Append("_Left");
         } else if(m_lookAngle < -22.5F && m_lookAngle > -157.5F) {
-            sb.Append(" Right");
+            sb.Append("_Right");
         }
+        */
 
-        string state = sb.ToString();        
-
+        string state = sb.ToString();
+        Debug.Log(state);
+                
+        //String state;
+        /*
+        if (m_velocity.x < 0) {
+            state = "Left";
+        }
+        else {
+            state = "Right";
+        }
+        */
         #if UNITY_EDITOR
         if(m_debugText != null)
             m_debugText.text = state + "\n" + m_lookAngle;
