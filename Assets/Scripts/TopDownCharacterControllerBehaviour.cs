@@ -162,8 +162,8 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // var stateInfo = m_animator.GetCurrentAnimatorStateInfo(-1);
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
-        
-        m_animator.PlayInFixedTime(TopDownDashCharacterControllerBehaviour.m_animations[a]);
+    
+        m_animator.PlayInFixedTime(TopDownDashCharacterControllerBehaviour.m_animations[a]); 
     }
 
     public void Stop() {

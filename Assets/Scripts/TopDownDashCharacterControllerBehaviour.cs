@@ -227,7 +227,7 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
             transform.localEulerAngles = LookRotation;
         }
 
-        // FaceTransform();
+        FaceTransform();
 
         // m_animator.SetFloat("Velocity X", m_velocity.x);
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
@@ -245,13 +245,13 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
         } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
             a += DOWN;
         }
-
+        /*
         if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
             a += LEFT;
         } else if(m_lookAngle < -22.5F && m_lookAngle > -157.5F) {
             a += RIGHT;
         }        
-
+        */
         #if UNITY_EDITOR
         if(m_debugText != null)
             m_debugText.text = m_lookAngle.ToString();
