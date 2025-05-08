@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -113,7 +114,7 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             transform.localEulerAngles = LookRotation;
         }
 
-        // FaceTransform();
+        FaceTransform();
 
         // m_animator.SetFloat("Velocity X", m_velocity.x);
         // m_animator.SetFloat("Velocity Y", m_velocity.y);

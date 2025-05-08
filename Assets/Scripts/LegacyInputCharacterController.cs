@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class LegacyInputCharacterController : TopDownDashCharacterControllerBehaviour {
@@ -56,5 +57,14 @@ public class LegacyInputCharacterController : TopDownDashCharacterControllerBeha
     void FixedUpdate() {
         Move(m_input, m_look, m_doDash, Time.fixedDeltaTime);
         m_doDash = false;
+        Flip();
+    }
+
+    void Flip() {
+        if (m_input.x > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (m_input.x < 0) {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }

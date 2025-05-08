@@ -184,7 +184,7 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
             transform.localEulerAngles = LookRotation;
         }
 
-        // FaceTransform();
+        FaceTransform();
 
         // m_animator.SetFloat("Velocity X", m_velocity.x);
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
