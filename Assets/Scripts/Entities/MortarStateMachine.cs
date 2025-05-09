@@ -7,6 +7,10 @@ namespace Entities {
         private float m_shootInterval;
 
         [SerializeField]
+        [Tooltip("How far above the player to spawn projectiles")]
+        private float m_distanceToFall;
+
+        [SerializeField]
         private TargetIndicator m_targetIndicator;
 
         [SerializeField]
