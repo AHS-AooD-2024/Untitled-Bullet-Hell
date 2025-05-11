@@ -98,6 +98,10 @@ public class Health : MonoBehaviour {
             BroadcastMessage("OnDeath", SendMessageOptions.DontRequireReceiver);
         }
     }
+
+    public void ResetHealth() {
+        m_damageTaken = 0;
+    }
 }
 
 }

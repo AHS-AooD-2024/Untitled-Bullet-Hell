@@ -254,6 +254,8 @@ GameObject:
   m_Component:
   - component: {fileID: 312579993}
   - component: {fileID: 312579992}
+  - component: {fileID: 312579995}
+  - component: {fileID: 312579994}
   m_Layer: 0
   m_Name: Fountain
   m_TagString: Untagged
@@ -295,7 +297,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.004768491, y: -0.27657402}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -305,7 +307,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.6689823, y: 1.2479637}
+  m_Size: {x: 2.75, y: 1.5}
   m_EdgeRadius: 0
 --- !u!4 &312579993
 Transform:
@@ -323,6 +325,69 @@ Transform:
   - {fileID: 545977806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &312579994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312579991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a4e3b1c0c5fef4eba8534da151c49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableColor:
+    serializedVersion: 2
+    rgba: 4290559164
+  sprite: {fileID: 545977807}
+  player: {fileID: 339531895}
+--- !u!61 &312579995
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312579991}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4.5, y: 3}
+  m_EdgeRadius: 0
 --- !u!1 &339531895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1353408468994325909, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
@@ -467,6 +532,11 @@ Transform:
 --- !u!4 &545977806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 1fa5d9ab79a61694187bf5162b2abf0c, type: 3}
+  m_PrefabInstance: {fileID: 1209205710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &545977807 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: 1fa5d9ab79a61694187bf5162b2abf0c, type: 3}
   m_PrefabInstance: {fileID: 1209205710}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &748844971 stripped
@@ -799,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d30d034c36ec8b44acb4929cd28272c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 1
+  m_maxHealth: 5
   m_takeDamageFrom: 4
   m_isFlying: 0
   m_isGrounded: 0
@@ -904,6 +974,10 @@ PrefabInstance:
       propertyPath: m_animator
       value: 
       objectReference: {fileID: 1069610730}
+    - target: {fileID: 6352043727644337332, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
+      propertyPath: m_doRotateTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6995865794637271272, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
       propertyPath: m_Controller
       value: 
