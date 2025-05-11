@@ -30,12 +30,6 @@ public class AttackBehaviour : MonoBehaviour {
     [Range(0, 10)]
     private int m_numReloadStages = 1;
 
-    [Header("Animations")]
-    [Space]
-
-    [SerializeField]
-    private Animator m_animator;
-
     public void Swing(float range, float breadth) => Swing(Vector2.up, range, breadth, DamageInfo.one);
     public void Swing(Vector2 direction, float range, float breadth) => Swing(direction, range, breadth, DamageInfo.one);
     public void Swing(float range, float breadth, DamageInfo damageInfo) => Swing(Vector2.up, range, breadth, DamageInfo.one);

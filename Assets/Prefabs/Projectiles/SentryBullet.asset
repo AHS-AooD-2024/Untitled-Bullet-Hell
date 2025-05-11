@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139c9fc40ea4eca4b9dbb0354de27e0a, type: 3}
   m_Name: SentryBullet
   m_EditorClassIdentifier: 
-  m_prefab: {fileID: 5530156388210549169, guid: 1a9688cd270ce6c40b94429ecc3da537, type: 3}
+  m_prefab: {fileID: 4443150951007704604, guid: 1a9688cd270ce6c40b94429ecc3da537, type: 3}
   m_speed: 10
   m_damage:
     damage: 1

@@ -42,9 +42,6 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     [Space]
 
     [SerializeField]
-    private Animator m_animator;
-
-    [SerializeField]
     private bool m_doRotateTransform = true;
 
     private Vector2 m_lookDirection = Vector2.zero;
@@ -69,9 +66,6 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
     private bool m_frozen;
 
     protected virtual void Awake() {
-        if(m_animator == null) {
-            m_animator = GetComponent<Animator>();
-        }
         
         if(m_rigidbody == null) {
             m_rigidbody = GetComponent<Rigidbody2D>();
@@ -126,26 +120,6 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
         // m_animator.SetBool("Is Dashing", m_isDashing);
 
-        int a = 0;
-
-        if(m_velocity.sqrMagnitude > 0.01F) {
-            a += TopDownDashCharacterControllerBehaviour.MOVE;
-        }
-    
-        // note m_lookAngle is in degrees along the domain [-180, 180]
-        if(m_lookAngle > -67.5F && m_lookAngle < 67.5F) {
-            a += TopDownDashCharacterControllerBehaviour.UP;
-        } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
-            a += TopDownDashCharacterControllerBehaviour.DOWN;
-        }
-        /*
-        if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
-            a += TopDownDashCharacterControllerBehaviour.LEFT;
-        } else if(m_lookAngle < -22.5F && m_lookAngle > -157.5F) {
-            a += TopDownDashCharacterControllerBehaviour.RIGHT;
-        }
-        */
-
         #if UNITY_EDITOR
         if(m_debugText != null)
             m_debugText.text = "\n" + m_lookAngle;
@@ -162,8 +136,6 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // var stateInfo = m_animator.GetCurrentAnimatorStateInfo(-1);
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
-    
-        m_animator.PlayInFixedTime(TopDownDashCharacterControllerBehaviour.m_animations[a]); 
     }
 
     public void Stop() {

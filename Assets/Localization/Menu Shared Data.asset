@@ -24,7 +24,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 758004121600
-    m_Key: PAUSE_QUIT_BUTTON
+    m_Key: PAUSE_QUIT_GAME_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523434042212352
+    m_Key: PAUSE_QUIT_MENU_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6517016744509440
+    m_Key: MAIN_BEGIN_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6517405380329472
+    m_Key: MAIN_QUIT_BUTTON
     m_Metadata:
       m_Items: []
   m_Metadata:
