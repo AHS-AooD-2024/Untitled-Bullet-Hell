@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Entities.States {
 
 [RequireComponent(typeof(Collider2D), typeof(ITopDownCharacterController))]
 [RequireComponent(typeof(LookingGlass))]
 public abstract class StateMachine : MonoBehaviour {
+    [SerializeField] private UnityEvent death;
     private EntityState m_state;
 
     [SerializeField]
@@ -88,6 +90,7 @@ public abstract class StateMachine : MonoBehaviour {
     }
 
     public void OnDeath() {
+        death.Invoke();
         m_state.Exit();
         m_state = GetDeathState();
         m_state.Init(m_info);
