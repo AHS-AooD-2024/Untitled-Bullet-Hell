@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4820774776457500526}
   - component: {fileID: 7695977920301315060}
   - component: {fileID: 5523868906623019442}
-  - component: {fileID: 1312070469102641992}
+  - component: {fileID: 869402457833014347}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -193,24 +193,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DoorScript, Assembly-CSharp
-        m_MethodName: UpdateDeadCounter
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_collider: {fileID: 5553679089720140599}
   m_animator: {fileID: 6253781628223891464}
   m_player: {fileID: 6617090064569851376, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
-  m_controller: {fileID: 1312070469102641992}
-  m_lookingGlass: {fileID: 1312070469102641992}
+  m_controller: {fileID: 869402457833014347}
+  m_lookingGlass: {fileID: 869402457833014347}
   m_sightRange: 10
   m_shootInterval: 3
   m_distanceFromPlayer: 4
@@ -237,7 +225,7 @@ MonoBehaviour:
   m_spriteRenderer: {fileID: 6434774008710596939}
   m_damageColor: {r: 1, g: 0, b: 0, a: 1}
   m_colorFadeDuration: 0.2
---- !u!114 &1312070469102641992
+--- !u!114 &869402457833014347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
