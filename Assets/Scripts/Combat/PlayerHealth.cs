@@ -25,3 +25,4 @@ public class PlayerHealth : Health {
         healthBar.UpdateHealthBar();
     }
 }
+}

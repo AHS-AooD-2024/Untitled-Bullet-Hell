@@ -12,6 +12,7 @@ public class Health : MonoBehaviour {
     private float m_damageTaken = 0.0F;
 
     public float RemainingHealth { get => m_maxHealth - m_damageTaken; }
+    public float MaxHealth { get => m_maxHealth; }
 
     public bool IsDead { get => m_damageTaken >= m_maxHealth; }
     public bool IsAlive { get => !IsDead; }

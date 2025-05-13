@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Combat;
 
 public class Health : MonoBehaviour {
     [SerializeField]
