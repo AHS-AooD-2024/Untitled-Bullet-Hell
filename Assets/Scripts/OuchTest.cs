@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 
 public class OuchTest : MonoBehaviour {

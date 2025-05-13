@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// A monobehaviour that can tell where an object is looking
 /// </summary>
-public abstract class LookingGlass : MonoBehaviour {
+public abstract class LookingGlass : MonoBehaviour, ILookingGlass {
     public abstract Vector2 Direction { get; }
 
     public float Angle { get => Vector2.Angle(Direction, Vector2.up); }

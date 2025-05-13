@@ -3,7 +3,11 @@ using UnityEngine;
 namespace Util {   
     public static class Gizmos2D {
         public static void DrawCircle(Vector2 center, float radius, float duration = 0.0F) {
-            DrawPolygon(center, radius, Color.white, segments: 16, duration: duration);
+            DrawCircle(center, radius, Color.white, duration);
+        }
+        
+        public static void DrawCircle(Vector2 center, float radius, Color color, float duration = 0.0F) {
+            DrawPolygon(center, radius, color, segments: 16, duration: duration);
         }
 
         public static void DrawPolygon(Vector2 center, float radius, Color color, int segments, float duration = 0.0F) {

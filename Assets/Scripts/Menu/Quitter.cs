@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Menu {
     // This is just so that UnityEvents can quit the game. Just for the pause menu really
@@ -8,7 +9,7 @@ namespace Menu {
 
         // TODO: when the main menu is a thing we also need to implement this
         public void QuitToMainMenu() {
-            throw new InvalidOperationException("Unimplemented Method: " + nameof(QuitToMainMenu));
+            SceneManager.LoadScene("MainMenuScene");
         }
     }
 }

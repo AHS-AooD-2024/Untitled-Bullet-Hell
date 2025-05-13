@@ -27,7 +27,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 758004121600
+    m_Localized: Salir al escritorio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6517016744509440
+    m_Localized: Empezar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6517405380329472
     m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523434042212352
+    m_Localized: "Salir al Men\xFA Principal"
     m_Metadata:
       m_Items: []
   references:

@@ -1,6 +1,9 @@
+using Combat;
 using UnityEngine;
 using Util;
 
+namespace Enemies {
+    
 public class ExplodeOnContactBehaviour : MonoBehaviour {
     [SerializeField]
     private DamageInfo m_explosionDamage = DamageInfo.one;
@@ -21,4 +24,6 @@ public class ExplodeOnContactBehaviour : MonoBehaviour {
             hit.BroadcastMessage("OnHitBySwing", m_explosionDamage, SendMessageOptions.DontRequireReceiver);
         }
     }
+}
+
 }

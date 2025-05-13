@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Combat;
 
 public class Health : MonoBehaviour {
     [SerializeField]
@@ -7,6 +9,7 @@ public class Health : MonoBehaviour {
 
     private float m_damageTaken = 0.0F;
 
+    public float MaxHealth {get => m_maxHealth;}
     public float RemainingHealth { get => m_maxHealth - m_damageTaken; }
 
     public bool IsDead { get => m_damageTaken >= m_maxHealth; }
