@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Nevelson.Topdown2DPitfall.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace Util {
@@ -40,7 +41,16 @@ namespace Util {
         private static RaycastHit2D[] m_raycastCache;
         private static Collider2D[] m_colliderCache;
 
-        private static ContactFilter2D m_noFilter = new ContactFilter2D().NoFilter();
+        private static ContactFilter2D m_defaultFilter = DefaultFilter();
+
+        private static ContactFilter2D DefaultFilter() {
+            ContactFilter2D filter = new();
+            filter.SetLayerMask(
+                ~(LayerMask.NameToLayer(Constants.PITFALL_COLLIDER) | LayerMask.NameToLayer("Ignore Raycast"))
+            );
+
+            return filter;
+        }
 
         private static void EnsureRaycastCache() {
             m_raycastCache ??= new RaycastHit2D[8];
@@ -51,7 +61,7 @@ namespace Util {
         }
 
         public static LineOfSight Check(Collider2D eye, Collider2D target) {
-            return Check(eye, target, m_noFilter);
+            return Check(eye, target, m_defaultFilter);
         }
         
         /// <summary>
@@ -72,6 +82,7 @@ namespace Util {
 
                 for(int i = 0; i < n; i++) {
                     RaycastHit2D hit = m_raycastCache[i];
+                    Debug.Log(hit.collider);
                     if(hit.collider == target) {
                         return new LineOfSight(hit, true);
                     } else if(hit.collider != eye) {

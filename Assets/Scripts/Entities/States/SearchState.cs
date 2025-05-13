@@ -4,7 +4,7 @@ using Util;
 namespace Entities.States {
     
 public class SearchState : EntityState {
-    private readonly ContactFilter2D m_filter;
+    private readonly ContactFilter2D? m_filter;
 
     private readonly float m_sightRange;
 
@@ -17,7 +17,7 @@ public class SearchState : EntityState {
     }
     
     public SearchState(float sightRange, EntityState after) {
-        m_filter = new ContactFilter2D().NoFilter();
+        m_filter = null;
         m_sightRange = sightRange;
         m_after = after;
     }
@@ -29,7 +29,14 @@ public class SearchState : EntityState {
     }
 
     protected override void OnUpdate() {
-        LineOfSight los = LineOfSight.Check(collider, player, m_filter);
+        LineOfSight los;
+        
+        if(m_filter is not null) {
+            los = LineOfSight.Check(collider, player, (ContactFilter2D) m_filter);
+        } else {
+            los = LineOfSight.Check(collider, player);
+        }
+
         if(los.HasLineOfSight && los.Hit.distance < m_sightRange) {
             Then(m_after);
         }
