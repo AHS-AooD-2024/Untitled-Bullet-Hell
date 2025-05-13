@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: be5c5d3a3f4e3db4e98588ac64ebfb9f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186763
+  packageName: Untitled
+  packageVersion: 1.0
+  assetPath: Assets/Topdown2DPitfall/PitfallCollider.prefab
+  uploadId: 410496

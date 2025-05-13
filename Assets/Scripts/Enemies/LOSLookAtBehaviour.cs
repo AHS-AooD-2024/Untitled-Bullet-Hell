@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+namespace Enemies {
+    
 public class LOSLookAtBehaviour : LookingGlass {
     [SerializeField]
     private GameObject m_lookAt;
@@ -31,7 +33,7 @@ public class LOSLookAtBehaviour : LookingGlass {
             m_lookAt.transform.position, transform.position,
             m_LineOfSightFilter, m_hits
         );
-        
+
         for (int i = 0; i < n; i++) {
             if (OtherThanUs(m_hits[i])) {
                 return false;
@@ -49,4 +51,6 @@ public class LOSLookAtBehaviour : LookingGlass {
     private bool OtherThanUs(RaycastHit2D hit) {
         return hit.transform != transform && hit.transform != m_lookAt.transform;
     }
+}
+
 }

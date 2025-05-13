@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a3a89c2ef908a7c4383a24b4dc9d9402
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186763
+  packageName: Untitled
+  packageVersion: 1.0
+  assetPath: Assets/Topdown2DPitfall/Scripts/Interfaces/IPitfallObject.cs
+  uploadId: 410496

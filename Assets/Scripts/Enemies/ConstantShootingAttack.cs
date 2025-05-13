@@ -1,5 +1,8 @@
 using System;
+using Combat;
 using UnityEngine;
+
+namespace Enemies {
 
 public class ConstantShootingAttack : AttackBehaviour {
 
@@ -13,4 +16,6 @@ public class ConstantShootingAttack : AttackBehaviour {
         UpdateCooldowns(Time.fixedDeltaTime);
         Shoot(m_projectile, m_lookingGlass.Direction);
     }
+}
+
 }
