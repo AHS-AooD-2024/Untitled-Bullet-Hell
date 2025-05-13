@@ -10,6 +10,8 @@ using UnityEngine;
 /// A character controller <see cref="MonoBehaviour"/> that uses a <see cref="Rigidbody2D"/>
 /// to move a game object.
 /// </summary>
+/// 
+/// fix me por favor
 [RequireComponent(typeof(Rigidbody2D))]
 public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharacterController, IPitfallObject {
 
@@ -74,6 +76,8 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             m_rigidbody.gravityScale = 0.0F;
             m_rigidbody.freezeRotation = true;
         }
+
+        m_frozen = false;
     }
 
     public void Move(Vector2 movement, Vector2 look, float deltaTime) => Move(movement, look, false, deltaTime);
@@ -96,6 +100,8 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             Mathf.Infinity, 
             deltaTime
         );
+
+        Debug.Log("targetVelocity=" + m_velocity);
 
         Vector2 translation = m_velocity;
         m_rigidbody.linearVelocity = translation;
@@ -136,6 +142,7 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // var stateInfo = m_animator.GetCurrentAnimatorStateInfo(-1);
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
+        Debug.Log(m_rigidbody.linearVelocity);
     }
 
     public void Stop() {

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 280134650382086326}
   - component: {fileID: 4721585289456621581}
   - component: {fileID: 7316512720688122031}
+  - component: {fileID: 4671463241565971942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -206,9 +207,8 @@ MonoBehaviour:
   m_dashDurationSeconds: 0.4
   m_dashCooldownSeconds: 0.33
   m_canDashControl: 0
-  m_animator: {fileID: 8554031005313072125}
+  m_animator: {fileID: 6995865794637271272}
   m_doRotateTransform: 0
-  m_idleFace: {x: 0, y: 1}
   m_debugText: {fileID: 0}
   m_doFollowMouse: 1
 --- !u!114 &4100373445019890026
@@ -226,7 +226,6 @@ MonoBehaviour:
   m_swingCooldownSeconds: 0.1
   m_shootCooldownSeconds: 0.5
   m_numReloadStages: 1
-  m_animator: {fileID: 0}
   m_lookingGlass: {fileID: 6352043727644337332}
   m_projectile: {fileID: 11400000, guid: 5ce865a4315a1c84dbd37cd1c334d11a, type: 2}
   m_doAutoFire: 1
@@ -260,9 +259,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4721585289456621581
 MonoBehaviour:
@@ -292,6 +291,25 @@ MonoBehaviour:
   pitfallAnimSpeed: 0.015
   respawnDistFromPit: 2
   customRespawnLocation: {fileID: 0}
+--- !u!114 &4671463241565971942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353408468994325909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d30d034c36ec8b44acb4929cd28272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 5
+  m_takeDamageFrom: 4
+  m_isFlying: 0
+  m_isGrounded: 0
+  m_damageGracePeriod: 0.2
+  m_deadColor: {r: 0, g: 0, b: 0, a: 0}
+  m_spriteRenderer: {fileID: 4852982914137673156}
 --- !u!1001 &3656434783353470379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,6 +384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Innit
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: 27336cfc445ad7642a73d53ab7634201, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 357b10e45185d664c88c7f4d168e5f91, type: 2}
     - target: {fileID: 7878350319992209165, guid: 27336cfc445ad7642a73d53ab7634201, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -414,5 +436,15 @@ PrefabInstance:
 --- !u!4 &2042842985388581421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 27336cfc445ad7642a73d53ab7634201, type: 3}
+  m_PrefabInstance: {fileID: 8145928710261071136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4852982914137673156 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: 27336cfc445ad7642a73d53ab7634201, type: 3}
+  m_PrefabInstance: {fileID: 8145928710261071136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6995865794637271272 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1160356261127867848, guid: 27336cfc445ad7642a73d53ab7634201, type: 3}
   m_PrefabInstance: {fileID: 8145928710261071136}
   m_PrefabAsset: {fileID: 0}

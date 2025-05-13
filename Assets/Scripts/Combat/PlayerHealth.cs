@@ -1,3 +1,4 @@
+using Assets.Scripts.UI;
 using UnityEngine;
 
 namespace Combat {
@@ -8,7 +9,7 @@ public class PlayerHealth : Health {
 
     [SerializeField]
     private SpriteRenderer m_spriteRenderer;
-
+    [SerializeField] HealthBar healthBar;
     private void Awake() {
         if(m_spriteRenderer == null) {
             m_spriteRenderer = GetComponent<SpriteRenderer>();
@@ -19,6 +20,8 @@ public class PlayerHealth : Health {
         m_spriteRenderer.color = m_deadColor;
         Debug.Log("I am dead!");
     }
-}
-
+    public void OnTakeDamage()
+    {
+        healthBar.UpdateHealthBar();
+    }
 }
