@@ -19,6 +19,7 @@ namespace Entities {
         private Projectile2D m_bullet;
 
         protected override EntityState GetInitialState() {
+            Debug.Log("Initial State");
             return new SearchState(m_sightRange, new EyeCircleState(m_shootInterval, m_distanceFromPlayer, m_revolutionaryPeriod, m_bullet));
         }
 
