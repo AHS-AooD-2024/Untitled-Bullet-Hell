@@ -80,13 +80,14 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         m_frozen = false;
     }
 
-    public void Move(Vector2 movement, Vector2 look, float deltaTime) => Move(movement, look, false, deltaTime);
-
-    public void Move(Vector2 movement, Vector2 look, bool doDash, float deltaTime) {
+    public void Move(Vector2 movement, Vector2 look, float deltaTime) {
         if(m_frozen) {
             m_rigidbody.linearVelocity = Vector2.zero;
             return;
         }
+
+        // this was what was missing.
+        m_move = movement.normalized;
 
         m_targetVelocity = m_move * m_movementSpeed;
 
@@ -100,8 +101,6 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
             Mathf.Infinity, 
             deltaTime
         );
-
-        Debug.Log("targetVelocity=" + m_velocity);
 
         Vector2 translation = m_velocity;
         m_rigidbody.linearVelocity = translation;
@@ -142,7 +141,6 @@ public class TopDownCharacterControllerBehaviour : LookingGlass, ITopDownCharact
         // var stateInfo = m_animator.GetCurrentAnimatorStateInfo(-1);
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
-        Debug.Log(m_rigidbody.linearVelocity);
     }
 
     public void Stop() {

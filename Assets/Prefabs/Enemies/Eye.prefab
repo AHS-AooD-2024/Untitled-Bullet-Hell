@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5553679089720140599}
   - component: {fileID: 6911119382104097014}
   - component: {fileID: 4820774776457500526}
-  - component: {fileID: 740037363282469825}
   - component: {fileID: 7695977920301315060}
   - component: {fileID: 5523868906623019442}
+  - component: {fileID: 1312070469102641992}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &5553679089720140599
@@ -179,29 +179,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &740037363282469825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741547348461722351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c012031c2d2600846abf7df472c02b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_movementSmoothing: 0.3
-  m_movementSpeed: 8
-  m_dashStartSpeedCoefficient: 8
-  m_dashEndSpeedCoefficient: 8
-  m_dashDurationSeconds: 0.5
-  m_dashCooldownSeconds: 0.33
-  m_canDashControl: 1
-  m_animator: {fileID: 6253781628223891464}
-  m_doRotateTransform: 1
-  m_idleFace: {x: 0, y: 1}
-  m_debugText: {fileID: 0}
 --- !u!114 &7695977920301315060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,11 +191,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d2dc0d5cb30214abc7d1c672dd8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  death:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DoorScript, Assembly-CSharp
+        m_MethodName: UpdateDeadCounter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_collider: {fileID: 5553679089720140599}
   m_animator: {fileID: 6253781628223891464}
   m_player: {fileID: 6617090064569851376, guid: 560c0e2c9059d4b4ab0e4f2290df0953, type: 3}
-  m_controller: {fileID: 740037363282469825}
-  m_lookingGlass: {fileID: 740037363282469825}
+  m_controller: {fileID: 1312070469102641992}
+  m_lookingGlass: {fileID: 1312070469102641992}
   m_sightRange: 10
   m_shootInterval: 3
   m_distanceFromPlayer: 4
@@ -238,9 +230,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 1
   m_takeDamageFrom: 3
+  m_isFlying: 0
+  m_isGrounded: 0
+  m_damageGracePeriod: 0.2
+  m_iframeFlashInterval: 0
   m_spriteRenderer: {fileID: 6434774008710596939}
   m_damageColor: {r: 1, g: 0, b: 0, a: 1}
   m_colorFadeDuration: 0.2
+--- !u!114 &1312070469102641992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741547348461722351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6f5dca29c688e4db112d0106bbf2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_movementSmoothing: 0.05
+  m_movementSpeed: 4
+  m_doRotateTransform: 1
+  m_debugText: {fileID: 0}
 --- !u!1001 &7717355436028959151
 PrefabInstance:
   m_ObjectHideFlags: 0

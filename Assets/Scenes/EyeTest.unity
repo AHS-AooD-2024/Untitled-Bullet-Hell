@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 514524433}
   - component: {fileID: 514524435}
   - component: {fileID: 514524436}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
