@@ -153,7 +153,6 @@ MonoBehaviour:
   m_canDashControl: 1
   m_animator: {fileID: 0}
   m_doRotateTransform: 0
-  m_idleFace: {x: 0, y: 1}
   m_debugText: {fileID: 0}
 --- !u!114 &1648020580720172734
 MonoBehaviour:
@@ -167,10 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb4359fc86a951438352eb8abbf9380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  death:
+    m_PersistentCalls:
+      m_Calls: []
   m_collider: {fileID: 3291209653337620873}
   m_animator: {fileID: 942635655789670731}
   m_player: {fileID: 0}
-  m_controller: {fileID: 1712344676941683603}
+  m_controller: {fileID: 0}
   m_lookingGlass: {fileID: 1712344676941683603}
   m_contactDamage:
     damage: 1
@@ -186,6 +188,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 28070dd74748cab4fbbd1e3a5fc8ecf1, type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 28070dd74748cab4fbbd1e3a5fc8ecf1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 28070dd74748cab4fbbd1e3a5fc8ecf1, type: 3}
       propertyPath: m_LocalPosition.x
