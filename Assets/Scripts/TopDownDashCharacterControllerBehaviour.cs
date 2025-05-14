@@ -190,18 +190,27 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
         // m_animator.SetFloat("Velocity Y", m_velocity.y);
         // m_animator.SetBool("Is Dashing", m_isDashing);
 
-        // int a = 0;
+        String anim;
 
-        // if(m_velocity.sqrMagnitude > 0.01F) {
-        //     a += MOVE;
-        // }
+         
 
         // // note m_lookAngle is in degrees along the domain [-180, 180]
-        // if(m_lookAngle > -67.5F && m_lookAngle < 67.5F) {
-        //     a += UP;
-        // } else if(m_lookAngle > 112.5F || m_lookAngle < -112.5F) {
-        //     a += DOWN;
-        // }
+         if(m_lookAngle > -90F && m_lookAngle < 90F) {
+            if(m_velocity.sqrMagnitude > 0.01F) {
+                anim = "Move Up";
+            }
+            else {
+                anim = "Idle Up";
+            }
+         } 
+         else {
+             if(m_velocity.sqrMagnitude > 0.01F) {
+                anim = "Move Down";
+            }
+            else {
+                anim = "Idle Down";
+            }
+         }
 
         // if (m_lookAngle > 22.5F && m_lookAngle < 157.5) {
         //     a += LEFT;
@@ -226,7 +235,7 @@ public class TopDownDashCharacterControllerBehaviour : LookingGlass, ITopDownDas
         // float t = (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime)) * stateInfo.length;
         // m_animator.PlayInFixedTime(state, -1, t);
         
-        // m_animator.PlayInFixedTime(m_animations[a]);
+         m_animator.PlayInFixedTime(anim);
     }
 
     public void Stop() {
