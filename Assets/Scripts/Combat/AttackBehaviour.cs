@@ -47,7 +47,10 @@ public class AttackBehaviour : MonoBehaviour {
             Debug.DrawLine(swingFrom, swingFrom + range * fwd, Color.white, 1.0F);
             Debug.DrawLine(swingFrom - Vector2.Perpendicular(fwd) * breadth, swingFrom + Vector2.Perpendicular(fwd) * breadth, Color.white, 1.0F);
             foreach (Collider2D hit in hits) {
-                hit.BroadcastMessage("OnHitBySwing", damageInfo, SendMessageOptions.DontRequireReceiver);
+                // no hitting yourself
+                // the alliance thing should make this not matter, but appearently not
+                if(hit.gameObject != gameObject)
+                    hit.BroadcastMessage("OnHitBySwing", damageInfo, SendMessageOptions.DontRequireReceiver);
             }
             m_swingCooldownTime = m_swingCooldownSeconds;
         }
