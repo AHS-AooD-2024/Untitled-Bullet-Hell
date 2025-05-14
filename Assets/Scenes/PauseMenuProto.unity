@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 310953228}
   - component: {fileID: 310953227}
   - component: {fileID: 310953226}
-  - component: {fileID: 310953225}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -139,18 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &310953225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310953224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 795b1990c135bd945b4c213d4dd1f213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &310953226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 2687344957526864535, guid: ff6ad78890ffbfa47bdecd313425df99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 310953225}
+      objectReference: {fileID: 0}
     - target: {fileID: 5651170202818816902, guid: ff6ad78890ffbfa47bdecd313425df99, type: 3}
       propertyPath: m_Name
       value: Pause Menu
