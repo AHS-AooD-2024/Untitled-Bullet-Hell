@@ -1,10 +1,11 @@
 using System.Collections;
 using Entities;
+using Nevelson.Topdown2DPitfall.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace Combat {
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour, IPitfallObject {
     [SerializeField]
     [Range(1.0F, 100.0F)]
     private float m_maxHealth = 1.0F;
@@ -19,6 +20,9 @@ public class Health : MonoBehaviour {
 
     [SerializeField]
     private Alliance m_takeDamageFrom;
+
+    [SerializeField]
+    private DamageInfo m_pitfallDamage;
 
     [SerializeField]
     private bool m_isFlying = false;
@@ -102,6 +106,13 @@ public class Health : MonoBehaviour {
 
     public void ResetHealth() {
         m_damageTaken = 0;
+    }
+
+    public void PitfallActionsBefore(){
+    }
+
+    public void PitfallResultingAfter(){
+        TakeDamage(m_pitfallDamage);
     }
 }
 

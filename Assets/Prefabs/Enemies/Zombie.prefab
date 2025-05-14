@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6578801055156088500}
   - component: {fileID: 2436214027199696883}
   - component: {fileID: 3783733907024709141}
+  - component: {fileID: 444500346775373670}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -37,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8096071501408682894}
+  - {fileID: 5968996716239690482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3291209653337620873
@@ -185,8 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eeec78005a8feb4eba751e0c588a020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 1
+  m_maxHealth: 3
   m_takeDamageFrom: 3
+  m_pitfallDamage:
+    damage: Infinity
+    alliance: 1
   m_isFlying: 0
   m_isGrounded: 0
   m_damageGracePeriod: 0.2
@@ -207,6 +212,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interactWith: 2
+--- !u!114 &444500346775373670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8701659415713545799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49fc6cbcd9d0c94cb2e00a7a397b84c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitfallAnimSpeed: 0.015
+  respawnDistFromPit: 2
+  customRespawnLocation: {fileID: 0}
 --- !u!1001 &2093756000809565315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,4 +306,66 @@ SpriteRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 28070dd74748cab4fbbd1e3a5fc8ecf1, type: 3}
   m_PrefabInstance: {fileID: 2093756000809565315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4469479794137047916
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2110395781856619311}
+    m_Modifications:
+    - target: {fileID: 7841025139664992669, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_Name
+      value: PitfallCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+--- !u!4 &5968996716239690482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7841025139664992670, guid: be5c5d3a3f4e3db4e98588ac64ebfb9f, type: 3}
+  m_PrefabInstance: {fileID: 4469479794137047916}
   m_PrefabAsset: {fileID: 0}
