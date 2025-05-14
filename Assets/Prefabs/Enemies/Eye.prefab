@@ -114,10 +114,10 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d2dc0d5cb30214abc7d1c672dd8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death:
+  m_onDeath:
     m_PersistentCalls:
       m_Calls: []
   m_collider: {fileID: 5553679089720140599}
