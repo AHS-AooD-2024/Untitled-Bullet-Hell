@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4510084218226249302}
   - component: {fileID: 2590706086912286201}
   - component: {fileID: 4432951197325668984}
+  - component: {fileID: 4934820027963995029}
+  - component: {fileID: 5862220752672884350}
   m_Layer: 0
   m_Name: Hinged Door
   m_TagString: Untagged
@@ -107,7 +109,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 3
+  m_Constraints: 0
 --- !u!233 &4432951197325668984
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -134,6 +136,35 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -90
     m_UpperAngle: 90
+--- !u!114 &4934820027963995029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151987359865087760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e7943b402624a479d0b5554240b976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 0}
+  m_joint: {fileID: 4432951197325668984}
+  m_needsToDie:
+  - {fileID: 0}
+--- !u!114 &5862220752672884350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151987359865087760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017bc25d0a7d49c4f8685bdabc117d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_interactWith: 2
 --- !u!1001 &8262185272149492192
 PrefabInstance:
   m_ObjectHideFlags: 0
