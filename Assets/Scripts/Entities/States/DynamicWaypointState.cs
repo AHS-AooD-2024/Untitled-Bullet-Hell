@@ -12,6 +12,7 @@ public class DynamicWaypointMoveState : EntityState {
     }
 
     protected override void OnExit() {
+        controller.Stop();
     }
 
     protected override void OnUpdate() {

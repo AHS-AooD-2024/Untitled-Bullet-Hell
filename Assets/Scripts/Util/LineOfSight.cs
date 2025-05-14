@@ -83,7 +83,6 @@ namespace Util {
 
                 for(int i = 0; i < n; i++) {
                     RaycastHit2D hit = m_raycastCache[i];
-                    Debug.Log(hit.collider);
                     if(hit.collider == target) {
                         return new LineOfSight(hit, true);
                     } else if(hit.collider != eye) {
